@@ -4,7 +4,8 @@
   "description": "PHU Telecom",
   "main": "app.js",
   "scripts": {
-    "start": "node src/app.js"
+    "start": "node src/app.js",
+    "build": "npm install"
   },
   "author": "Utkarsh Ethical",
   "license": "ISC",
