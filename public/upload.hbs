@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload - PHU Telecom</title>
+    {{>commLinks}}
+    {{>links}}
+    <style>
+.menuActive #menu{
+    right: 240px !important;
+}
+#head{
+    color: white;
+    font-family: poppins;
+    font-size: 50px;
+    margin-top: 100px;
+}
+form{
+    margin-top: 100px;
+    justify-content: center;
+}
+label{
+    color: white;
+    font-size: 100px;
+    margin: 0;
+}
+#fname{
+    background: #202020;
+    border: none;
+    color: white;
+    font-size: 50px;
+    margin-left: 30px;
+    height: 100px;
+    width: 700px;
+    transform: translateY(-20px);
+    border: 5px white solid;
+    padding: 0 20px 0 20px;
+    border-radius: 20px;
+}
+#uname{
+    outline: none;
+    color: white;
+    width: 850px;
+    height: 130px;
+    border-radius: 30px;
+    font-size:  50px;
+    padding: 0 25px 0 25px;
+    background: #202020;
+    border: 5px solid white;
+    margin-top: 100px;
+}
+#uname::placeholder{
+    color: white;
+}
+#uname:focus{
+    color: black;
+    background: white;
+    border-color: #202020;
+}
+#butt{
+    height: 130px;
+    border-radius: 30px;
+    font-size:  50px;
+    width: 900px;
+    color: black;
+    border: 5px solid white;
+    background: white;
+    margin-top: 100px;
+}
+#butt:hover{
+    color: white;
+    background: #202020;
+}
+a{
+    color: white;
+}
+    </style>
+</head>
+<body>
+    {{>userNav}}
+    <center><div id="head">Select the file you want to upload</div></center>
+    <center><form action="/phus/upload" method="POST" enctype="multipart/form-data">
+      <input type="file" hidden name="file" id="file" required>
+      <label for="file"><i class="fas fa-upload"></i></label>  
+      <input disabled id="fname" value="No file selected"><br>
+      <input type="text" id="uname" name="name" placeholder="Enter the name of the file you want" required><br>
+      <input type="submit" value="Upload" id="butt">
+    </form></center>
+    <div hidden id="message">{{message}}</div>
+    <script>
+$(window).ready(()=>{
+    if($('#message').html()!='')
+    {
+        alert($('#message').html())
+    }
+})
+$('#file').on('change',function(){
+    if (this.files[0].size/1000000>=100) {
+        alert('Maximum file size is 100MB')
+    }
+    else{
+        $('#fname').val(this.value.replace('C:\\fakepath\\',''))
+        $('#uname').val(this.value.replace('C:\\fakepath\\',''))
+    }
+})
+    </script>
+</body>
+</html>

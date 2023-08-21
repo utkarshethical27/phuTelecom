@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{name}} - PHU Telecom</title>
+    {{>userLinks}}
+    {{>commLinks}}
+    <style>
+        *{
+    transition: .3s;
+    font-family: poppins;
+    color: white;
+}
+body{
+    background: #202020;
+}
+#center{
+    position: absolute;
+    top: 50%;
+    margin-left: 30px;
+    transform: translateY(-50%);
+}
+#wel{
+    font-size: 90px;
+    width: 100%;
+}
+#wel span{
+    font-family: playfair display sc;
+}
+
+    </style>
+</head>
+<body>
+    {{>userNav}}
+    <div id="center">
+        <font id="wel">Welcome,<br><span>{{name}}</span></font>
+    </div>
+</body>
+</html>

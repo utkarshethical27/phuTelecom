@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PHU Telecom</title>
+    {{>links}}
+    {{>commLinks}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <style>
+*{
+    font-family: poppins;
+    color: white;
+}
+body{
+    background: #202020;
+}
+#center{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    margin-left: 20px;
+}
+#greet{
+    font-size: 85px;
+    text-align: center;
+}
+#type{
+    color: #969696;
+}
+#login{
+    background: white;
+    color: #202020;
+    outline: none;
+    border-style: none;
+    width: 350px;
+    height: 125px;
+    margin-top: 20px;
+    margin-left: 10px;
+    font-size: 50px;
+    border-radius: 100px;
+    border: 5px white solid;
+}
+#login:hover{
+    background: #202020;
+    color: white;
+}
+a{
+    text-decoration: none;
+    -webkit-tap-higlight-color: transparent;
+}
+    </style>
+</head>
+<body>
+    {{>navbar}}
+    <div id="center">
+       <font id="greet">The right gateway for your connection to the&nbsp;<span id="type"></span></font><br>
+       <a href="/login"><button id="login">Login Now</button></a>
+    </div>
+    <div id="script" hidden>{{message}}</div>
+    
+    <script>
+        
+$(document).ready(()=>{
+    var typed = new Typed('#type', { 
+    strings: ['Area', 'City','State','Country','Continent','World'],
+    typeSpeed: 200,
+    backSpeed: 100,
+    loop: true
+    })
+})
+        
+    </script>
+</body>
+</html>

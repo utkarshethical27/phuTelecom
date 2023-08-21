@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <title>Change Password</title>
+    {{>commLinks}}
+    {{>links}}
+    {{>userLinks}}
+    <style>
+body{
+    background: #202020;
+}
+*{
+    color: white;
+}
+input::-webkit-inner-spin-button,input::-webkit-outer-spin-button{
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+#logotxt{
+    font-size: 100px;
+}
+#detail{
+    margin-top: 150px;
+    font-size: 50px;
+}
+form{
+    margin-top: 100px;
+    display: flex;
+    column-gap: 30px;
+    flex-wrap: wrap;
+    width: 800px;
+}
+form .otp{
+    width: 100px;
+    height: 100px;
+    border-radius: 30px;
+    font-size: 80px;
+    text-align: center;
+    outline: none;
+    color: black;
+}
+#sub{
+    margin-top: 100px;
+    outline: none;
+    color: black;
+    width: 810px;
+    height: 130px;
+    border-radius: 30px;
+    font-size:  50px;
+    padding: 0 25px 0 25px;
+    background: white;
+    border: 5px solid white;
+    transition: .3s;
+}
+#sub:hover{
+    color: white;
+    background: #202020;
+}
+    </style>
+</head>
+<body>
+    <center><font id="logotxt">PHU Telecom</font></center>
+    <center><div id="detail">Enter 6-digit verification code received in your inbox.</font></center>
+    <center><form action="/subpass" method="POST">
+        <input type="number" class="otp" required name="d1">
+        <input type="number" class="otp" required name="d2">
+        <input type="number" class="otp" required name="d3">
+        <input type="number" class="otp" required name="d4">
+        <input type="number" class="otp" required name="d5">
+        <input type="number" class="otp" required name="d6">
+        <input type="submit" value="Proceed" id="sub">
+    </form></center>
+    <div hidden id="message">{{message}}</div>
+    <script>
+$(window).ready(()=>{
+    if ($('#message').html()!='') {
+        alert($('#message').html())
+    }
+})
+$('form .otp').on('keyup',function(e){
+    if (this.value!="") {
+        if(e.target.nextElementSibling!=null) {
+            e.target.nextElementSibling.focus()
+        }else{
+           e.target.blur() 
+        }
+    }else{
+        e.target.previousElementSibling.focus()
+    }
+})
+    </script>
+</body>
+</html>

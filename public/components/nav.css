@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display+SC&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+
+*{
+    transition: .3s;
+}
+body{
+    margin: 0px;
+    background: #202020;
+}
+nav{
+    background: #202020;
+    width: 100%;
+    padding: 0;
+    display: inline-flex;
+    position: sticky;
+}
+#logo{
+    width: 140px;
+    margin: 10px;
+    position: sticky;
+}
+#logotxt{
+    color: white;
+    font-size: 60px;
+    margin-left: 20px;
+    margin-top: 35px;
+    font-family: playfair display sc;
+    position: sticky;
+}
+#menuBar{
+    position: absolute;
+    right: 30px;
+    top: 30px;
+}
+#menuBar #cover{
+    background: red;
+    opacity: 0;
+    width: 130px;
+    height: 100px;
+    z-index: 3 !important;
+    position: sticky;
+}
+#menuBar #bar{
+    position: fixed;
+    right: 30px;
+    top: 30px;
+}
+#menuBar .bars{
+    background: white;
+    width: 130px;
+    height: 20px;
+    margin-bottom: 20px;
+    border-radius: 130px;
+    z-index: 3;
+}
+#menuBack{
+    background: #202020;
+    position: fixed;
+    top: 155px;
+    right: -1000px;
+    width: 1000px;
+    height: 100vh;
+}
+#menu{
+    list-style: none;
+    text-align: center;
+    color: white;
+    font-size: 100px;
+    font-family: poppins;
+    z-index: 3;
+    position: fixed;
+    right: 0px;
+    top: calc(50% - 100px);
+    transform: translateY(-50%);
+}
+#menu li{
+    margin-top: 70px;
+    width: initial;
+}
+#menu li:hover{
+    transform: scale(1.2);
+}
+.slide{
+    position: fixed;
+    right: -1000px !important;
+}
+
+.barActive .bars{
+    display: block;
+}
+.menuActive #menuBack{
+    position: fixed;
+    right: 0px !important;
+}
+.menuActive #menu{
+    position: fixed;
+    right: 300px !important;
+}
+.barActive{
+    top: -10px !important;
+}
+.barActive #bar1{
+    transform: rotate(-45deg);
+    margin-top: 80px;
+}
+.barActive #bar2{
+    transition: .1s;
+    opacity: 0;
+}
+.barActive #bar3{
+    transform: rotate(45deg);
+    margin-top: -80px;
+}
+#menuCover{
+    background: #202020;
+    height: 200vh;
+    width: 1000px;
+    position: fixed;
+    right: -1000px;
+    z-index: 2;
+    top: 155px;
+}
+.menuActive #menuCover{
+    right: 0px !important;
+}
+a{
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+}
+#log{
+    color: #202020;
+    background: white;
+    border-radius: 20px;
+}

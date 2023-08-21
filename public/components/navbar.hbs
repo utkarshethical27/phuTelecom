@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="nav.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script src="nav.js"></script>
+</head>
+<body>
+    <nav>
+        <img src="../images/logo.png" alt="Logo" id="logo">
+        <font id="logotxt">PHU Telecom</font>
+        <div id="menuBar">
+            <div id="cover"></div>
+            <div id="bar">
+                <div class="bars"id="bar1"></div>
+                <div class="bars"id="bar2"></div>
+                <div class="bars"id="bar3"></div>
+            </div>
+        </div>
+    </nav>
+    <div id="menuAll">
+    <div id="menuCover"></div>
+    <div id="menuBack" class="slide"></div>
+        <ul id="menu" class="slide">
+            <a href="/"><li>Home</li></a>
+            <a href="/about"><li>About</li></a>
+            <a href="/contact"><li>Contact</li></a>
+            <a href="/login"><li id="log">Login</li></a>
+        </ul>
+    </div>
+    <script>
+$(document).ready(()=>{
+    
+    $('#cover').click(()=>{
+        $('#bar').toggleClass('barActive')
+        $('#menuAll').toggleClass('menuActive')
+    })
+})
+
+    </script>
+</body>
+</html>

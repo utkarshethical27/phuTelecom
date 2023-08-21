@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact - PHU Telecom</title>
+    {{>links}}
+    {{>commLinks}}
+    <style>
+*{
+    font-family: poppins;
+    color: white;
+}
+body{
+    background: #202020;
+}
+a{
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+}
+#content{
+    display: block;
+    margin-top: 100px;
+}
+#head{
+    font-size: 100px;
+}
+#infos{
+    font-size: 55px;
+    margin-top: 90px;
+    margin-left: 50px;
+    line-height: 120px;
+}
+.fas{
+    margin-right: 30px;
+}
+    </style>
+</head>
+<body>
+    {{>navbar}}
+    <div id="content">
+        <center><font id="head">Contact</font></center>
+        <div id="infos">
+            <font class="info"><i class="fas fa-envelope"></i>phutelecom@gmail.com</font><br>
+            <font class="info"><i class="fas fa-phone"></i>1800180478</font><br>
+            <font class="info"><i class="fas fa-location-dot"></i>Kanpur, Uttar Pradesh</font>
+            </div>
+    </div>
+</body>
+</html>

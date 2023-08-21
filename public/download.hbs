@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Download - PHU Telecom</title>
+    {{>userLinks}}
+    {{>commLinks}}
+    <style>
+::-webkit-scrollbar{
+    display: none;
+}
+#logo{
+    position: sticky;
+}
+#logotxt{
+    position: sticky;
+}
+#files{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    font-size: 70px;
+    width: 100%;
+    max-height: 78%;
+    overflow: scroll;
+    padding: 0;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    margin-top: 100px;
+}
+#files input{
+    margin-bottom: 100px;
+    background: white;
+    color: black;
+    border-radius: 100px;
+    padding: 10px 0 10px 0;
+    border: 5px solid white;
+    width: 95%;
+    font-size: 60px;
+    font-family: poppins;
+}
+#files input:hover{
+    background: #202020;
+    color: white;
+}
+#null{
+    color: white;
+    font-family: poppins;
+    font-size: 50px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%);
+}
+    </style>
+</head>
+<body>
+    {{>userNav}}
+    <div hidden id="dir">{{files}}</div>
+    <center><form action="/phus/download" method="POST"><ul id="files">
+    </ul></form></center>
+    <script>
+const files = $('#dir').html().split(',')
+if(files!=""){
+    files.forEach(createElm)
+}
+else{
+    const div = document.createElement('div')
+    div.innerHTML = "Storage is empty"
+    div.setAttribute("id","null")
+    const body = document.querySelector("body")
+    body.appendChild(div)
+}
+function createElm(file){
+    try{
+        const div = document.createElement('input')
+        div.setAttribute('type','submit')
+        div.setAttribute('name',file)
+        div.value = file
+        const ul = document.querySelector('#files')
+        ul.appendChild(div)
+    } catch(e) {
+        alert(e)
+    }
+}
+    </script>
+</body>
+</html>

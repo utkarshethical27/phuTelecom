@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile - {{name}}</title>
+    {{>commLinks}}
+    {{>userLinks}}
+    {{>links}}
+    <style>
+*{
+    transition: .3s;
+    color: white;
+}
+.fa-arrow-left{
+    font-size: 120px;
+    margin: 30px;
+    padding: 10px 18px 10px 18px;
+    text-align: center;
+    border-radius: 100px;
+    position: fixed;
+    z-index: 2;
+}
+.fa-arrow-left:hover{
+    background: #404040;
+}
+#logotxt{
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 80px;
+    width: 100%;
+    text-align: center;
+    padding-left: 30px;
+}
+#info{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: 50px;
+    font-size: 55px;
+}
+.fas{
+    margin-right: 30px;
+}
+#info div{
+    margin-bottom: 50px !important;
+}
+    </style>
+</head>
+<body>
+    <a href="/phus/account"><i class="fas fa-arrow-left"></i></a>
+    <div id="logotxt">PHU Telecom</div>
+    <div id="info">
+        <div><i class="fas fa-user"></i>{{name}}</div>
+        <div><i class="fas fa-envelope"></i>{{email}}</div>
+    </div>
+</body>
+</html>

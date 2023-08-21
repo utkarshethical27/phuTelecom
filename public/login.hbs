@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - PHU Telecom</title>
+    {{>links}}
+    {{>commLinks}}
+    <style>
+*{
+    color: white;
+}
+#content{
+    padding-top: 150px;
+    display: grid;
+    grid-row-gap: 100px;
+}
+#logHead{
+    font-size: 50px;
+    margin-top: 150px;
+}
+#form input{
+    margin-bottom: 100px;
+    outline: none;
+    color: white;
+    width: 870px;
+    height: 130px;
+    border-radius: 30px;
+    font-size:  50px;
+    padding: 0 25px 0 25px;
+    background: #202020;
+    border: 5px solid white;
+}
+#form input::placeholder{
+    color: white;
+}
+#form input:focus{
+    color: black;
+    background: white;
+    border-color: #202020;
+}
+#butt{
+    width: 930px !important;
+    color: black !important;
+    background: white !important;
+    border-color: #202020 !important;
+}
+#butt:hover{
+    width: 930px !important;
+    color: white !important;
+    background: rgb(32, 32, 32) !important;
+    border-color: white !important;
+}
+.fa-solid{
+    font-size: 70px;
+    color: #202020;
+    margin-bottom: 200px;
+    position: absolute;
+    margin-left: -110px;
+    margin-top: 38px;
+}
+.fa-eye-slash{
+    margin-left: -115.5px;
+}
+#pass:focus .fa-solid{
+    display: block !important;
+}
+    </style>
+</head>
+<body>
+    {{>navbar}}
+    <div id="content">
+        <center><font id="logHead">Enter credentials to start your session</font></center>
+        <center><form action="/login" method="POST" id="form">
+           <input type="email" id="email" required placeholder="Enter your email" name="email"><br>
+           <input type="password" id="pass" name="pass" required placeholder="Enter your password">
+           <label for="pass"><i class="fa-solid fa-eye"></i></label>
+           <br>
+           <input type="submit" value="Login" id="butt">
+        </form><center>
+    </div>
+    <div hidden id="message">{{message}}</div>
+    <script>
+$(window).ready(()=>{
+    if ($('#message').html()!='') {
+        alert($('#message').html())
+    }
+})
+$('.fa-solid').on('click',()=>{
+    if (!$('.fa-solid').attr('class').includes('slash')) {
+           $('#pass').attr('type','text')
+    }
+    else{
+        $('#pass').attr('type','password')
+    }
+    $('.fa-solid').toggleClass('fa-eye-slash')
+    $('.fa-solid').toggleClass('fa-eye')
+})
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Change password - PHU Telecom</title>
+    {{>commLinks}}
+    {{>userLinks}}
+    {{>links}}
+    <style>
+*{
+    transition: .3s;
+    color: white;
+}
+.fa-arrow-left{
+    font-size: 120px;
+    left: 30px;
+    top: 30px;
+    padding: 10px 18px 10px 18px;
+    text-align: center;
+    border-radius: 100px;
+    position: fixed;
+    z-index: 2;
+}
+.fa-arrow-left:hover{
+    background: #404040;
+}
+#logotxt{
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 80px;
+    width: 100%;
+    text-align: center;
+    padding-left: 30px;
+}
+#form{
+    margin-top: 300px;
+    position: fixed;
+    left: calc(50% + 160px);
+    transform: translateX(-50%);
+}
+@media (max-width: 1000px) {
+    #form{
+      left: 50%;  
+    }
+}
+#form input{
+    margin-bottom: 100px;
+    outline: none;
+    color: white;
+    width: 870px;
+    height: 130px;
+    border-radius: 30px;
+    font-size:  50px;
+    padding: 0 25px 0 25px;
+    background: #202020;
+    border: 5px solid white;
+}
+#form input::placeholder{
+    color: white;
+}
+#form input:focus{
+    color: black;
+    background: white;
+    border-color: #202020;
+}
+#butt{
+    width: 930px !important;
+    color: black !important;
+    background: white !important;
+    border-color: #202020 !important;
+}
+#butt:hover{
+    width: 930px !important;
+    color: white !important;
+    background: rgb(32, 32, 32) !important;
+    border-color: white !important;
+}
+.disabled{
+    opacity: .5;
+}
+    </style>
+</head>
+<body>
+    <a href="/phus/account"><i class="fas fa-arrow-left"></i></a>
+    <div id="logotxt">PHU Telecom</div>
+    <form id="form" action="/passchange" method="POST">
+        <input type="password" placeholder="Enter new password" name="newPass" required id="pass">
+        <input type="password" placeholder="Re-enter new password" name="reNewPass" required id="repass">
+        <input type="submit" value="Proceed" id="butt" disabled class="disabled">
+    </form>
+    <script>
+$('input').on('keyup',()=>{
+    let pass = $('#pass').val()
+    let repass = $('#repass').val()
+    if(pass==""||repass==""){
+        $('#butt').attr('disabled',true)
+        $('#butt').addClass('disabled')
+    }
+    else if(pass==repass) {
+        $('#butt').attr('disabled',false)
+        $('#butt').removeClass('disabled')
+    }
+    else{
+       $('#butt').attr('disabled',true)
+       $('#butt').addClass('disabled') 
+    }
+})
+    </script>
+</body>
+</html>

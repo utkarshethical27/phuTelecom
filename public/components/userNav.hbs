@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="userNav.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script src="nav.js"></script>
+</head>
+<body>
+    <nav>
+        <img src="../images/logo.png" alt="Logo" id="logo">
+        <font id="logotxt">PHU Telecom</font>
+        <div id="menuBar">
+            <div id="cover"></div>
+            <div id="bar">
+                <div class="bars"id="bar1"></div>
+                <div class="bars"id="bar2"></div>
+                <div class="bars"id="bar3"></div>
+            </div>
+        </div>
+    </nav>
+    <div id="menuAll">
+    <div id="menuCover"></div>
+    <div id="menuBack" class="slide"></div>
+        <ul id="menu" class="slide">
+            <a href="/phus/message"><li>Message</li></a>
+            <a href="/phus/upload"><li>Upload</li></a>
+            <a href="/phus/download"><li>Download</li></a>
+            <a href="/phus/account"><li >Account</li></a>
+        </ul>
+    </div>
+    <script>
+$(document).ready(()=>{
+    
+    $('#cover').click(()=>{
+        $('#bar').toggleClass('barActive')
+        $('#menuAll').toggleClass('menuActive')
+    })
+})
+
+    </script>
+</body>
+</html>

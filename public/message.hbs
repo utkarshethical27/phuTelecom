@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Message - PHU Telecom</title>
+    {{>userLinks}}
+    {{>commLinks}}
+    <style>
+#send{
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    color: black;
+}
+.send{
+    height: 100px;
+    border: 5px solid white;
+    outline: none;
+    margin-right: 20px;
+    font-size: 60px;
+    font-family: poppins;
+    border-radius: 15px;
+}
+#text{
+    width: calc(80% - 30px);
+    margin-left: 20px;
+    padding: 0 10px 0 10px;
+}
+#sendButt{
+    width: 110px;
+    background: white;
+    height: 110px;
+    margin-right: 20px;
+}
+#sendButt:hover{
+    background: #202020;
+    color: white;
+}
+.fas{
+    transition: .1s;
+}
+#message{
+    color: white;
+    font-size: 50px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 100px;
+    max-height: 70%;
+    overflow-y: scroll;
+    position: absolute;
+    overflow-x: none;
+    width: 100%;
+    max-width: 100%;
+}
+#message font{
+    margin-bottom: 100px;
+    padding: 0 20px 0 20px;
+    font-family: poppins;
+}
+*::-webkit-scrollbar{
+    display: none;
+}
+    </style>
+</head>
+<body>
+    {{>userNav}}
+    <center>    
+    <div id="message">
+    </div>
+    <div id="send">
+        <input type="text" id="text" class="send" placeholder="Message">
+        <button id="sendButt" class="send"><i class="fas fa-paper-plane"></i></button>
+    </div>
+    </center>
+    <div id="history" hidden>{{history}}</div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+$(document).ready(()=>{
+    const history = $('#history').html().split(';')
+    history.forEach(createElm)
+    function createElm(msg){
+        const font = document.createElement('font')
+        font.innerHTML = msg
+         document.querySelector('#message').appendChild(font)
+        document.querySelector('#message').scrollTop = document.querySelector('#message').scrollHeight
+    }
+})
+        var socket = io()
+$('#sendButt').click(()=>{
+    if ($('#text').val()!='') {
+        let token = document.cookie.replace('jwt=','')
+        socket.emit('message',{
+            msg: $('#text').val(),
+            token: token
+        })
+    }
+})
+socket.on('message',(param)=>{
+    const font = document.createElement('font')
+    font.innerHTML = param.msg+' ~ '+param.name
+    document.querySelector('#message').appendChild(font)
+    $('#text').val('')
+    document.querySelector('#message').scrollTop = document.querySelector('#message').scrollHeight
+})
+    </script>
+</body>
+</html>

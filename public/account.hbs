@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Account - PHU Telecom</title>
+    {{>userLinks}}
+    {{>commLinks}}
+    <style>
+#options{
+    list-style: none;
+    text-align: center;
+    font-size: 60px;
+    display: grid;
+    margin-right: 50px;
+    margin-top: 100px;
+}
+#options li{
+    background: white;
+    color: black;
+    padding: 20px 0 20px 0;
+    border-radius: 50px;
+    margin-top: 100px;
+    border: 5px white solid;
+}
+#options li:hover{
+    background: #202020;
+    color: white;
+}
+a{
+    -webkit-tap-highlight-color: transparent;
+}
+    </style>
+</head>
+<body>
+    {{>userNav}}
+    <ul id="options">
+        <a href="/phus/profile"><li>Profile</li></a>
+        <a href="/phus/passchange"><li>Change password</li></a>
+        <a href="/phus/logout"><li>Logout</li></a>
+    </ul>
+</body>
+</html>
