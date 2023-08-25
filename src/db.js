@@ -45,6 +45,7 @@ async function setCode(mail,code) {
 
 async function changePass(mail,pass) {
     try{
+        pass = decodeURI(pass)
         await PHU.findOneAndUpdate({email: mail},{password: pass})
     } catch(e) {
         console.log(e)
