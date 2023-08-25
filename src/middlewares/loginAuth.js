@@ -5,8 +5,9 @@ const fetchCookie = require('./fetchCookie')
 
 const auth = async (req, res, next)=>{
     try{
+        const pass = encodeURIComponent(req.body.pass)
         const result = await database.fetch(req.body.email)
-    if (result.password==req.body.pass) {
+    if (result.password==pass) {
         const token = await jwt.sign({
             email: result.email,
             name: result.name
