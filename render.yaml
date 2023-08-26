@@ -18,6 +18,6 @@
         value: phuisthebest
       - key: GMAIL
         value: phutelecom.official@gmail.com
-      - key: GMAIL_PASSWORD
-        value: 80
+      - key: GMAIL_PASS
+        value: ggqschuayvehkbmf
     autoDeploy: false
