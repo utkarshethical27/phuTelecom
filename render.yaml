@@ -1,12 +1,12 @@
 - type: web
   name: phutelecom
   runtime: node
-  repo: https://github.com/utkarshethical27/phuTelecom.git
+  repo: 'https://github.com/utkarshethical27/phuTelecom.git'
   scaling:
     minInstances: 1
     maxInstances: 3
-    targetMemoryPercent: 60 # optional if targetCPUPercent is set
-    targetCPUPercent: 60 # optional if targetMemory is set
+    targetMemoryPercent: 60
+    targetCPUPercent: 60
   buildCommand: npm install
   startCommand: npm start
   domains:
