@@ -1,23 +1,23 @@
 - type: web
-    name: phutelecom
-    runtime: node
-    repo: https://github.com/utkarshethical27/phuTelecom.git
-    scaling:
-      minInstances: 1
-      maxInstances: 3
-      targetMemoryPercent: 60 # optional if targetCPUPercent is set
-      targetCPUPercent: 60 # optional if targetMemory is set
-    buildCommand: npm install
-    startCommand: npm start
-    domains:
-      - phutelecom.onrender.com
-    envVars:
-      - key: PORT
-        value: 80
-      - key: SECRET_KEY
-        value: phuisthebest
-      - key: GMAIL
-        value: phutelecom.official@gmail.com
-      - key: GMAIL_PASS
-        value: ggqschuayvehkbmf
-    autoDeploy: false
+  name: phutelecom
+  runtime: node
+  repo: https://github.com/utkarshethical27/phuTelecom.git
+  scaling:
+    minInstances: 1
+    maxInstances: 3
+    targetMemoryPercent: 60 # optional if targetCPUPercent is set
+    targetCPUPercent: 60 # optional if targetMemory is set
+  buildCommand: npm install
+  startCommand: npm start
+  domains:
+    - phutelecom.onrender.com
+  envVars:
+    - key: PORT
+      value: 80
+    - key: SECRET_KEY
+      value: phuisthebest
+    - key: GMAIL
+      value: phutelecom.official@gmail.com
+    - key: GMAIL_PASS
+      value: ggqschuayvehkbmf
+  autoDeploy: false
