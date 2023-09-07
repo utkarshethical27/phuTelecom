@@ -26,7 +26,7 @@ const upload = async (req,res,next)=>{
                 user: 'if0_34979074',
                 password: 'mqwiH8x16sv'
             })
-        }
+        })
     }catch(e){
         res.render('upload',{
             message: 'File upload failed'
