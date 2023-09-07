@@ -9,7 +9,7 @@ const upload = async (req,res,next)=>{
             if(err) throw err
         })
         const server = new Client()
-        server.on('ready',()=>{
+        server.on('ready',async ()=>{
             await server.put('./storage/'+name,'./Storage/',(err)=>{
                 if(err) throw err
                 res.render('upload',{
