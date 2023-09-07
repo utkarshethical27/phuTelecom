@@ -14,6 +14,7 @@ const io = new Server(server)
 const fetchUser = require('./middlewares/fetchAuth')
 const fs = require('fs')
 const port = process.env.PORT || 80
+const Client = require('ftp')
 
 app.use(express.static(pubPath))
 app.set("view engine","hbs")
@@ -37,7 +38,17 @@ io.on('connection',(socket)=>{
     socket.on('message', async (param)=>{
         let user = await fetchUser.fetch(param.token)
         let history = param.msg+' ~ '+user.name+';'
-       await  fs.appendFileSync("./src/chatHistory.txt",history)
+        const s = new Client()
+        await s.on('ready',()=>{
+          await s.append(history,'chatHistory.txt',(err)=>{
+            if (err) console.log(err)
+          })
+        })
+        await server.connect({
+          host: 'ftpupload.net',
+          user: 'if0_34979074',
+          password: 'mqwiH8x16sv'
+        })
         io.emit('message',{
             msg: param.msg,
             name: user.name
