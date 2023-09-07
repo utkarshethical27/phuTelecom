@@ -22,11 +22,8 @@ app.set("views",pubPath)
 hbs.registerPartials(path.join(pubPath, "/components"))
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
-/*app.use('/', mainRoutes)
-app.use('/phus', phusRoutes)*/
-app.get('',(req,res)=>{
-    res.render('down')
-})
+app.use('/', mainRoutes)
+app.use('/phus', phusRoutes)
 require('dotenv').config()
 app.use(fileUpload())
 
