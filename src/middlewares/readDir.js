@@ -17,3 +17,5 @@ const read = async (req,res,next)=>{
     })
     })
 }
+
+module.exports = read
