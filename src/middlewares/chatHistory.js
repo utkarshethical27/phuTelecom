@@ -7,7 +7,8 @@ const chatHistory = async (req,res)=>{
         await server.get('chatHistory.txt',async (err,stream)=>{
             if (err) console.log(err)
             stream.once('close', function() { server.end(); });
-            const data = fs.createReadStream(stream.pipe())
+            const data
+            stream.pipe(data)
             res.render('message',{
                 history: data
             })
@@ -17,9 +18,6 @@ const chatHistory = async (req,res)=>{
         host: 'ftpupload.net',
         user: 'if0_34979074',
         password: 'mqwiH8x16sv'
-    })
-    fs.readFile('./src/chatHistory.txt','utf-8',(err,data)=>{
-        
     })
 }
 
