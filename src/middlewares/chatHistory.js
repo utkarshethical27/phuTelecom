@@ -7,8 +7,10 @@ const chatHistory = async (req,res)=>{
         await server.get('chatHistory.txt',async (err,stream)=>{
             if (err) console.log(err)
             stream.once('close', function() { server.end(); });
-
-      await stream.pipe(fs.createWriteStream('./src/chatHistory.txt'));
+            const data = fs.createReadStream(stream.pipe())
+            res.render('message',{
+                history: data
+            })
         })
     })
     await server.connect({
@@ -17,9 +19,7 @@ const chatHistory = async (req,res)=>{
         password: 'mqwiH8x16sv'
     })
     fs.readFile('./src/chatHistory.txt','utf-8',(err,data)=>{
-        res.render('message',{
-            history: data
-        })
+        
     })
 }
 
