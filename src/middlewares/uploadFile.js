@@ -15,9 +15,10 @@ const upload = async (req,res,next)=>{
             server.on('ready',async ()=>{
                 await server.put(data,'./Storage/',(err)=>{
                    if(err) console.log(err)
-                    res.render('upload',{
+                    res.send(data)
+                    /*res.render('upload',{
                         message: 'File uploaded successfully'
-                    })
+                    })*/
                 })
             })
             server.connect({
