@@ -7,7 +7,7 @@ const chatHistory = async (req,res)=>{
         await server.get('chatHistory.txt',async (err,stream)=>{
             if (err) console.log(err)
             stream.once('close', function() { server.end(); });
-            const data
+            let data
             stream.pipe(data)
             res.render('message',{
                 history: data
