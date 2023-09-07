@@ -16,7 +16,7 @@ const chatHistory = async (req,res)=>{
         user: 'if0_34979074',
         password: 'mqwiH8x16sv'
     })
-    await fs.readFile('./src/chatHistory.txt','utf-8',(err,data)=>{
+    await fs.readFileSync('./src/chatHistory.txt','utf-8',(err,data)=>{
         res.render('message',{
             history: data
         })
