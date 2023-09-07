@@ -4,9 +4,13 @@ const path = require('path')
 const upload = async (req,res,next)=>{
     try{
         const name = req.body.name
-        req.files.file.mv('./storage/'+name,()=>{
-            res.render('upload',{
-            message: 'File uploaded successfully'
+        const server = new Client()
+        server.on('ready',()=>{
+            server.put(req.files.file,'./Storage/',(err)=>{
+                if(err) throw err
+                res.render('upload',{
+                    message: 'File uploaded successfully'
+                })
             })
         })
     }catch(e){
