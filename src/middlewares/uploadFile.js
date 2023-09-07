@@ -11,7 +11,6 @@ const upload = async (req,res,next)=>{
         })
         const file = path.join(__dirname,'../../storage/'+name)
         fs.readFile(file,(err, data)=>{
-            if(err) console.log(err)
             const server = new Client()
             server.on('ready',async ()=>{
                 await server.put(data,'./Storage/',(err)=>{
