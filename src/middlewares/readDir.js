@@ -8,6 +8,8 @@ const read = async (req,res,next)=>{
         server.list('./Storage',(err,dir)=>{
             if(err) res.send(err)
             let files = []
+            dir.shift()
+            dir.shift()
             dir.forEach((e)=>{
                 files.push(e.name)
             })
