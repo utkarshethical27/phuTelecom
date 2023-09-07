@@ -7,8 +7,19 @@ const read = async (req,res,next)=>{
     server.on('ready',async ()=>{
         server.list('./Storage',(err,dir)=>{
             if(err) res.send(err)
-            res.send(dir)
+            let files = []
+            dir.forEach((e)=>{
+                files.push(e.name)
+            }
+            res.render('download',{
+                files: files
+            })
         })
+    })
+    server.connect({
+        host: 'ftpupload.net',
+        user: 'if0_34979074',
+        password: 'mqwiH8x16sv'
     })
 }
 
