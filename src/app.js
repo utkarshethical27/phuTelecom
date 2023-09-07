@@ -41,7 +41,7 @@ io.on('connection',async (socket)=>{
             if (err) console.log(err)
           })
         })
-        await server.connect({
+        await s.connect({
           host: 'ftpupload.net',
           user: 'if0_34979074',
           password: 'mqwiH8x16sv'
