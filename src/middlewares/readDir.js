@@ -15,5 +15,5 @@ const read = async (req,res,next)=>{
             files: files
         })
     })
-    }
+    })
 }
