@@ -7,13 +7,9 @@ const read = async (req,res,next)=>{
     server.on('ready',async ()=>{
         server.list('./Storage/',(err,dir)=>{
             if(err) console.log(err)
-            let files = []
-            dir.forEach((e)=>{
-                files.push(e.name)
-            })
-            res.render('download',{
+            res.send(dir)/*render('download',{
                 files: files
-            })
+            })*/
         })
     })
 }
