@@ -10,12 +10,13 @@ const upload = async (req,res,next)=>{
         })
         const file = path.join(__dirname,'../../storage/'+name)
         fs.readFile(file,(err, data)=>{
+            res.send(data)
             if(err) throw err
             const server = new Client()
             server.on('ready',async ()=>{
                 await server.put(data,'./Storage/',(err)=>{
                    if(err) console.log(err)
-                    res.send(data)
+                    
                     /*res.render('upload',{
                         message: 'File uploaded successfully'
                     })*/
