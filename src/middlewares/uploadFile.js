@@ -1,5 +1,6 @@
 const fileUpload = require('express-fileupload')
 const path = require('path')
+const Client = require('ftp')
 
 const upload = async (req,res,next)=>{
     try{
