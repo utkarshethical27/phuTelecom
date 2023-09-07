@@ -25,7 +25,7 @@ app.use(express.urlencoded({extended:true}))
 app.use('/phus', phusRoutes)*/
 app.get('',(req,res)=>{
     res.render('down')
-}
+})
 require('dotenv').config()
 app.use(fileUpload())
 
