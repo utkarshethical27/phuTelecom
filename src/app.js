@@ -34,7 +34,7 @@ app.post('/phus/upload', uploadFile,(req,res)=>{
     res.status(200)
 })
 
-io.on('connection',(socket)=>{
+io.on('connection',async (socket)=>{
     socket.on('message', async (param)=>{
         let user = await fetchUser.fetch(param.token)
         let history = param.msg+' ~ '+user.name+';'
