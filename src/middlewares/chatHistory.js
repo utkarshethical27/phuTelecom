@@ -19,6 +19,7 @@ const chatHistory = async (req,res)=>{
     await fs.readFile('./src/chatHistory.txt','utf-8',(err,data)=>{
         //Hello World!
     })
+    window.location.reload()
     await fs.readFile('./src/chatHistory.txt','utf-8',(err,data)=>{
         res.render('message',{
             history: data
