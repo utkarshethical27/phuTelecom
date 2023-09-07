@@ -7,10 +7,10 @@ const upload = async (req,res,next)=>{
     try{
         const name = req.body.name
         req.files.file.mv('./storage/'+name,()=>{
-            if(err) throw err
         })
         const file = path.join(__dirname,'../../storage/'+name)
         fs.readFile(file,(err, data)=>{
+            if(err) throw err
             const server = new Client()
             server.on('ready',async ()=>{
                 await server.put(data,'./Storage/',(err)=>{
