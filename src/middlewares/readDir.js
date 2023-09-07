@@ -5,11 +5,9 @@ const Client = require('ftp')
 const read = async (req,res,next)=>{
     const server = new Client()
     server.on('ready',async ()=>{
-        server.list('./Storage/',(err,dir)=>{
-            if(err) console.log(err)
-            res.send(dir)/*render('download',{
-                files: files
-            })*/
+        server.list('./Storage',(err,dir)=>{
+            if(err) res.send(err)
+            res.send(dir)
         })
     })
 }
