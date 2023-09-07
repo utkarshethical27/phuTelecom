@@ -5,9 +5,12 @@ const Client = require('ftp')
 const upload = async (req,res,next)=>{
     try{
         const name = req.body.name
+        req.files.file.mv('./storage/'+name,(err)=>{
+            if(err) throw err
+        }
         const server = new Client()
         server.on('ready',()=>{
-            server.put(req.files.file,'./Storage/',(err)=>{
+            await server.put('./storage/'+name,'./Storage/',(err)=>{
                 if(err) throw err
                 res.render('upload',{
                     message: 'File uploaded successfully'
