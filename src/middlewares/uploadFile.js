@@ -6,7 +6,7 @@ const fs = require('fs')
 const upload = async (req,res,next)=>{
     try{
         const name = req.body.name
-        req.files.file.mv('./storage/'+name,(err)=>{
+        req.files.file.mv('./storage/'+name,()=>{
             if(err) throw err
         })
         const file = path.join(__dirname,'../../storage/'+name)
