@@ -39,7 +39,7 @@ io.on('connection',async (socket)=>{
         let user = await fetchUser.fetch(param.token)
         let history = param.msg+' ~ '+user.name+';'
         const s = new Client()
-        await s.on('ready',()=>{
+        await s.on('ready',async ()=>{
           await s.append(history,'chatHistory.txt',(err)=>{
             if (err) console.log(err)
           })
