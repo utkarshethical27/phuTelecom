@@ -10,7 +10,8 @@ const upload = async (req,res,next)=>{
         })
         const server = new Client()
         server.on('ready',async ()=>{
-            await server.put('./storage/'+name,'./Storage/',(err)=>{
+            const path = './storage/'+name
+            await server.put(path,'./Storage/',(err)=>{
                 if(err) throw err
                 res.render('upload',{
                     message: 'File uploaded successfully'
