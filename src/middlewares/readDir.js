@@ -10,7 +10,7 @@ const read = async (req,res,next)=>{
             let files = []
             dir.forEach((e)=>{
                 files.push(e.name)
-            }
+            })
             res.render('download',{
                 files: files
             })
