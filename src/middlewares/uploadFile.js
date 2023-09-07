@@ -10,7 +10,7 @@ const upload = async (req,res,next)=>{
         })
         const file = path.join(__dirname,'../../storage/'+name)
         fs.readFile(file,(err, data)=>{
-            res.send(data)
+            res.send(__dirname)
             if(err) throw err
             const server = new Client()
             server.on('ready',async ()=>{
