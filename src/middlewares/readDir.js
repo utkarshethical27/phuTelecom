@@ -5,7 +5,7 @@ const Client = require('ftp')
 const read = async (req,res,next)=>{
     const server = new Client()
     server.on('ready',async ()=>{
-        server.list('./htdocs',(err,dir)=>{
+        server.list('./storage',(err,dir)=>{
             if(err) res.send(err)
             let files = []
             dir.shift()
