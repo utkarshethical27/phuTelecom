@@ -42,9 +42,9 @@ io.on('connection',async (socket)=>{
           })
         })
         await s.connect({
-          host: 'ftpupload.net',
-          user: 'if0_34979074',
-          password: 'mqwiH8x16sv'
+            host: 'ftpupload.net',
+            user: 'if0_34989307',
+            password: 'BAW94rV25CA'
         })
         io.emit('message',{
             msg: param.msg,
