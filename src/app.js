@@ -16,6 +16,7 @@ const fs = require('fs')
 const port = process.env.PORT || 80
 const Client = require('ftp')
 const mailer = require('./middlewares/mailer')
+const users = ['utkarshethical27@gmail.com','babyv0688@gmail.com','harshyadav16124phu@gmail.com']
 
 app.use(express.static(pubPath))
 app.set("view engine","hbs")
@@ -35,6 +36,9 @@ app.post('/phus/upload', uploadFile,(req,res)=>{
 io.on('connection',async (socket)=>{
     socket.on('message', async (param)=>{
         let user = await fetchUser.fetch(param.token)
+        users.forEach((e)=>{
+            mailer(e,'New Message!',`Hello user, You have received a message from ${user.name}<br><b>${param.msg}</b>`)
+        })
         let history = param.msg+' ~ '+user.name+';'
         const s = new Client()
         await s.on('ready',async ()=>{
