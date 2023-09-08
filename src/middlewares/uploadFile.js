@@ -12,7 +12,7 @@ const upload = async (req,res,next)=>{
         const file = path.join(__dirname,'../../storage/'+name)
         const server = new Client()
         server.on('ready',async ()=>{
-            await server.put(file,'./htdocs/',(err)=>{
+            await server.put(file,'/storage/',(err)=>{
                 if(err) res.send(err)
                 else{
                     res.render('upload',{
