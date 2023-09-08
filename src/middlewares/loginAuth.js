@@ -15,7 +15,7 @@ const auth = async (req, res, next)=>{
         if(fetchCookie.token(req)) {
             res.redirect('/phus/home')
         }else{
-            res.cookie('jwt',token)
+            res.cookie('jwt',token,{maxAge: 315576000000})
             res.redirect('/phus/home')
         }
     }
