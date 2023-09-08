@@ -10,7 +10,7 @@ const read = async (req,res,next)=>{
             let files = []
             dir.shift()
             dir.shift()
-            dir.slice(dir.indexOf('chatHistory.txt'),1)
+            dir.splice(dir.indexOf('chatHistory.txt'),1)
             dir.forEach((e)=>{
                 files.push(e.name)
             })
