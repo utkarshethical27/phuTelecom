@@ -5,7 +5,7 @@ const fetchUser = require('../middlewares/fetchAuth')
 const fetchCookie = require('../middlewares/fetchCookie')
 const readDir = require('../middlewares/readDir')
 const chatHistory = require('../middlewares/chatHistory')
-const chatHistory = require('../middlewares/downloadFile')
+const downloadFile = require('../middlewares/downloadFile')
 
 router.get("/home", verifyAuth,(req,res)=>{
         const token = fetchCookie.token(req)
