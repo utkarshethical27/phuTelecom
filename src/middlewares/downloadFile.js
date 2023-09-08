@@ -1,6 +1,6 @@
 const ftp = require('basic-ftp')
 
-const download = (req,res)=>{
+const download = async (req,res)=>{
     const client = new ftp.Client()
     client.ftp.verbose = true
     try {
