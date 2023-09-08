@@ -11,24 +11,25 @@ const upload = async (req,res,next)=>{
         const file = path.join(__dirname,'../../storage/'+name)
         fs.readFile(file,(err, data)=>{
             fs.readdir(path.join(__dirname,'../../storage'),(err,dir)=>{
-                res.send(dir)
+                console.log(dir)
             })
-            if(err) throw err
+            if(err) res.send(err)
             const server = new Client()
             server.on('ready',async ()=>{
                 await server.put(data,'./htdocs/',(err)=>{
-                   if(err) console.log(err)
+                   if(err) res.send(err)
                     
                     /*res.render('upload',{
                         message: 'File uploaded successfully'
                     })*/
                 })
             })
-            server.connect({
-                host: 'ftpupload.net',
-                user: 'if0_34989307',
-                password: 'BAW94rV25CA'
-            })
+            
+        })
+        server.connect({
+            host: 'ftpupload.net',
+            user: 'if0_34989307',
+            password: 'BAW94rV25CA'
         })
     }catch(e){
         res.render('upload',{
