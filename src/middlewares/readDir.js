@@ -5,12 +5,12 @@ const Client = require('ftp')
 const read = async (req,res,next)=>{
     const server = new Client()
     server.on('ready',async ()=>{
-        server.list('./',(err,dir)=>{
+        server.list('',(err,dir)=>{
             if(err) res.send(err)
             let files = []
-            /*dir.shift()
             dir.shift()
-            dir.slice(dir.indexOf('chatHistory.txt'),1)*/
+            dir.shift()
+            dir.slice(dir.indexOf('chatHistory.txt'),1)
             dir.forEach((e)=>{
                 files.push(e.name)
             })
