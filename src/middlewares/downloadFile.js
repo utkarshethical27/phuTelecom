@@ -13,6 +13,9 @@ const download = async (req,res)=>{
       res.send(name)
       //await client.downloadTo(
     }
+    catch(e){
+        res.send(e)
+    }
 }
 
 module.exports = download
