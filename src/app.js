@@ -15,6 +15,7 @@ const fetchUser = require('./middlewares/fetchAuth')
 const fs = require('fs')
 const port = process.env.PORT || 80
 const Client = require('ftp')
+const mailer = require('./middlewares/mailer')
 
 app.use(express.static(pubPath))
 app.set("view engine","hbs")
