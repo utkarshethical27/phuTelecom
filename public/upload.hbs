@@ -95,8 +95,8 @@ $(window).ready(()=>{
     }
 })
 $('#file').on('change',function(){
-    if (this.files[0].size/1000000>=100) {
-        alert('Maximum file size is 100MB')
+    if (this.files[0].size/1000000>=10) {
+        alert('Maximum file size is 10MB')
     }
     else{
         $('#fname').val(this.value.replace('C:\\fakepath\\',''))
