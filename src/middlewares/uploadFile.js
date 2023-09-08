@@ -19,10 +19,11 @@ const upload = async (req,res,next)=>{
                 password: "BAW94rV25CA",
                 secure: true
             })
-        await client.uploadFrom(file,name)
+        const result = await client.uploadFrom(file,name)
+        res.send(result)
     }
     catch(err) {
-        console.log(err)
+        res.send(err)
     }
     }catch(e){
         res.render('upload',{
