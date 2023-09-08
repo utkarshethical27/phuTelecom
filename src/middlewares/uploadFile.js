@@ -16,7 +16,7 @@ const upload = async (req,res,next)=>{
             if(err) throw err
             const server = new Client()
             server.on('ready',async ()=>{
-                await server.put(data,'./Storage/',(err)=>{
+                await server.put(data,'./htdocs/',(err)=>{
                    if(err) console.log(err)
                     
                     /*res.render('upload',{
