@@ -10,7 +10,7 @@ const download = async (req,res)=>{
             password: "BAW94rV25CA"
         })
       const name = Object.keys(req.body).toString()
-      const file = './storage/+name
+      const file = './storage/'+name
       await client.downloadTo(file,name)
       res.download(file)
     }
