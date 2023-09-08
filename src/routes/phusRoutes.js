@@ -5,6 +5,7 @@ const fetchUser = require('../middlewares/fetchAuth')
 const fetchCookie = require('../middlewares/fetchCookie')
 const readDir = require('../middlewares/readDir')
 const chatHistory = require('../middlewares/chatHistory')
+const chatHistory = require('../middlewares/downloadFile')
 
 router.get("/home", verifyAuth,(req,res)=>{
         const token = fetchCookie.token(req)
@@ -36,13 +37,6 @@ router.get('/upload', verifyAuth,(req,res)=>{
     res.render('upload')
 })
 router.get('/download', verifyAuth, readDir)
-router.post('/download',(req,res)=>{
-    const name = Object.keys(req.body).toString()
-    res.download('./storage/'+name,(err)=>{
-        if (err) {
-            console.log(err)
-        }
-    })
-})
+router.post('/download', downloadFile)
 
 module.exports = router
