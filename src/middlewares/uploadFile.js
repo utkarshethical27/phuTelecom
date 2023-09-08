@@ -18,7 +18,8 @@ const upload = async (req,res,next)=>{
                 user: "if0_34989307",
                 password: "BAW94rV25CA"
             })
-        const result = await client.uploadFrom(file,'./storage/'+name)
+        const to = 'storage/'+name
+        const result = await client.uploadFrom(file,to)
         res.render('upload',{
                 message: 'File uploaded successfully'
             })
