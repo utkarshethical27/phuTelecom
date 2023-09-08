@@ -9,18 +9,15 @@ const upload = async (req,res,next)=>{
         await req.files.file.mv('./storage/'+name,()=>{
         })
         const file = path.join(__dirname,'../../storage/'+name)
-        fs.readFile(file,(err, data)=>{
-            fs.readdir(path.join(__dirname,'../../storage'),(err,dir)=>{
-                console.log(dir)
-            })
-            const server = new Client()
-            server.on('ready',async ()=>{
-                await server.put(data,'htdocs/',(err)=>{
-                   if(err) res.send(err)
-                    /*res.render('upload',{
-                        message: 'File uploaded successfully'
-                    })*/
-                })
+        const server = new Client()
+        server.on('ready',async ()=>{
+            await server.put(file,'htdocs/',(err)=>{
+            if(err) res.send(err)
+            else{
+            res.render('upload',{
+             message: 'File uploaded successfully'
+                 })
+            }
             })
             
         })
