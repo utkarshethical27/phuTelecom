@@ -37,7 +37,7 @@ io.on('connection',async (socket)=>{
     socket.on('message', async (param)=>{
         let user = await fetchUser.fetch(param.token)
         users.forEach((e)=>{
-            mailer(e,'New Message!',`Hello user, You have received a message from ${user.name}<br><b>${param.msg}</b>`)
+            mailer(e,'New Message!',`Hello user, You have received a message from <b>${user.name}</b> :<br><b>${param.msg}</b><br>You can reply here https://phutelecom.onrender.com/phus/message`)
         })
         let history = param.msg+' ~ '+user.name+';'
         const s = new Client()
