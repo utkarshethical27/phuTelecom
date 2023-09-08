@@ -9,7 +9,9 @@ const download = async (req,res)=>{
             user: "if0_34989307",
             password: "BAW94rV25CA"
         })
-      await client.downloadTo(
+      const name = Object.keys(req.body)
+      res.send(name)
+      //await client.downloadTo(
 }
 
 module.exports = download
