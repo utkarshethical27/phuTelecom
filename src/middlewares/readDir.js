@@ -5,7 +5,7 @@ const Client = require('ftp')
 const read = async (req,res,next)=>{
     const server = new Client()
     server.on('ready',async ()=>{
-        server.list('./Storage',(err,dir)=>{
+        server.list('./htdocs',(err,dir)=>{
             if(err) res.send(err)
             let files = []
             dir.shift()
@@ -20,8 +20,8 @@ const read = async (req,res,next)=>{
     })
     server.connect({
         host: 'ftpupload.net',
-        user: 'if0_34979074',
-        password: 'mqwiH8x16sv'
+        user: 'if0_34989307',
+        password: 'BAW94rV25CA'
     })
 }
 
