@@ -26,8 +26,8 @@ const upload = async (req,res,next)=>{
             })
             server.connect({
                 host: 'ftpupload.net',
-                user: 'if0_34979074',
-                password: 'mqwiH8x16sv'
+                user: 'if0_34989307',
+                password: 'BAW94rV25CA'
             })
         })
     }catch(e){
