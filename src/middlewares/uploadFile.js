@@ -16,8 +16,7 @@ const upload = async (req,res,next)=>{
             await client.access({
                 host: "ftpupload.net",
                 user: "if0_34989307",
-                password: "BAW94rV25CA",
-                secure: true
+                password: "BAW94rV25CA"
             })
         const result = await client.uploadFrom(file,name)
         res.send(result)
