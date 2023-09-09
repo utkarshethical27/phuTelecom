@@ -89,10 +89,11 @@ $(document).ready(()=>{
 })
         var socket = io()
 $('#sendButt').click(()=>{
+    let message = $('#text').val().replace('¿','')
     if ($('#text').val()!='') {
         let token = document.cookie.replace('jwt=','')
         socket.emit('message',{
-            msg: $('#text').val(),
+            msg: message,
             token: token
         })
     }
