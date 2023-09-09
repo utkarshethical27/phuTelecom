@@ -62,7 +62,8 @@
     <center><form action="/phus/download" method="POST"><ul id="files">
     </ul></form></center>
     <script>
-const files = $('#dir').html().split(',')
+let files = $('#dir').html().split(',')
+files.splice(files.indexOf('chatHistory.txt'),1)
 if(files!=""){
     files.forEach(createElm)
 }
