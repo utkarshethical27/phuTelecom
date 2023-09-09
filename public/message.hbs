@@ -93,13 +93,13 @@ $(document).ready(()=>{
         var socket = io()
 $('#sendButt').click(()=>{
     let message = $('#text').val().replace('¿','')
-    $('#text').val('')
-    if ($('#text').val()!='') {
+    if (message!='') {
         let token = document.cookie.replace('jwt=','')
         socket.emit('message',{
             msg: message,
             token: token
         })
+        $('#text').val('')
     }
 })
 socket.on('message',(param)=>{
