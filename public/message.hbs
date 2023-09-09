@@ -105,7 +105,7 @@ $('#sendButt').click(()=>{
 socket.on('message',(param)=>{
     const font = document.createElement('font')
     font.innerHTML = param.msg+' ~ '+param.name
-    let audio = new Audio('message.mp3')
+    var audio = new Audio('message.mp3')
     audio.play()
     document.querySelector('#message').appendChild(font)
     document.querySelector('#message').scrollTop = document.querySelector('#message').scrollHeight
