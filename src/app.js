@@ -39,7 +39,7 @@ io.on('connection',async (socket)=>{
         users.forEach((e)=>{
             mailer(e,'New Message!',`Hello user, You have received a message from <b>${user.name}</b> :<br><b>${param.msg}</b><br>You can reply here https://phutelecom.onrender.com/phus/message`)
         })
-        let history = param.msg+' ~ '+user.name+'&utbr;'
+        let history = param.msg+' ~ '+user.name+'¿'
         const s = new Client()
         await s.on('ready',async ()=>{
           await s.append(history,'chatHistory.txt',(err)=>{
