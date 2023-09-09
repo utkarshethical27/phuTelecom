@@ -78,6 +78,9 @@
     <script src="/socket.io/socket.io.js"></script>
     <script>
 $(document).ready(()=>{
+    $('#send').on('send',(e)=>{
+        e.preventDefault
+    })
     const history = $('#history').html().split('¿')
     history.forEach(createElm)
     function createElm(msg){
