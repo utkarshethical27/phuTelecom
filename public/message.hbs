@@ -93,6 +93,7 @@ $(document).ready(()=>{
         var socket = io()
 $('#sendButt').click(()=>{
     let message = $('#text').val().replace('¿','')
+    $('#text').val('')
     if ($('#text').val()!='') {
         let token = document.cookie.replace('jwt=','')
         socket.emit('message',{
@@ -104,8 +105,9 @@ $('#sendButt').click(()=>{
 socket.on('message',(param)=>{
     const font = document.createElement('font')
     font.innerHTML = param.msg+' ~ '+param.name
+    let audio = new Audio('message.mp3')
+    audio.play()
     document.querySelector('#message').appendChild(font)
-    $('#text').val('')
     document.querySelector('#message').scrollTop = document.querySelector('#message').scrollHeight
 })
     </script>
