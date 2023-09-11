@@ -8,9 +8,8 @@ const read = async (req,res,next)=>{
         server.list('',(err,dir)=>{
             if(err) res.send(err)
             let files = []
-            dir.shift()
-            dir.shift()
-            dir.splice(dir.indexOf('chatHistory.txt'),1)
+            dir.splice(dir.indexOf('.'),1)
+            dir.splice(dir.indexOf('..'),1)
             dir.forEach((e)=>{
                 files.push(e.name)
             })
