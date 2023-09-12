@@ -111,6 +111,10 @@ socket.on('message',(param)=>{
     document.querySelector('#message').appendChild(font)
     document.querySelector('#message').scrollTop = document.querySelector('#message').scrollHeight
 })
+$('#record').click(()=>{
+    $('#record').toggleClass('fa-microphone')
+    $('#record').toggleClass('fa-stop')
+})
     </script>
 </body>
 </html>
