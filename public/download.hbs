@@ -64,6 +64,7 @@
     <script>
 let files = $('#dir').html().split(',')
 files.splice(files.indexOf('chatHistory.txt'),1)
+files.splice(files.indexOf('Audio'),1)
 if(files!=""){
     files.forEach(createElm)
 }
