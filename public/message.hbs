@@ -28,13 +28,13 @@
     margin-left: 20px;
     padding: 0 10px 0 10px;
 }
-#sendButt{
+button{
     width: 110px;
     background: white;
     height: 110px;
     margin-right: 20px;
 }
-#sendButt:hover{
+button:hover{
     background: #202020;
     color: white;
 }
@@ -72,6 +72,7 @@
     <form id="send" onsubmit="return false">
         <input type="text" id="text" class="send" placeholder="Message">
         <button id="sendButt" class="send"><i class="fas fa-paper-plane"></i></button>
+        <button id="record" class="send"><i class="fas fa-microphone"></i></button>
     </form>
     </center>
     <div id="history" hidden>{{history}}</div>
