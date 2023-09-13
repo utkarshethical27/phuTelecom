@@ -125,7 +125,7 @@ let media = []
 let recorder
 $('.fa-microphone').click(()=>{
     try{
-        stream = navigator.mediaDevices.getUserMedia({audio: true})
+        stream = await navigator.mediaDevices.getUserMedia({audio: true})
         recorder = new MediaRecorder(stream)
         recorder.ondataavailable = (e) =>{
           media.push(data.data)  
