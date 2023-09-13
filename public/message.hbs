@@ -163,7 +163,7 @@ socket.on('message',(param)=>{
     audio.innerHTML = '<source src="'+param.url+'">'
     var bgm = new Audio('message.mp3')
     bgm.play()
-    document.querySelector('#message').appendChild(font)
+    document.querySelector('#message').appendChild(audio)
     document.querySelector('#message').scrollTop = document.querySelector('#message').scrollHeight
 })
     </script>
