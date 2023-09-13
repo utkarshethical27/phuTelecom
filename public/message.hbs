@@ -127,7 +127,7 @@ $('.fa-microphone').click(()=>{
     try{
         stream = navigator.mediaDevices.getUserMedia({audio: true})
         recorder = new MediaRecorder(stream)
-        recorder.ondataavailable = (e){
+        recorder.ondataavailable = e =>{
           media.push(data.data)  
         }
         recorder.start()
@@ -141,7 +141,7 @@ $('.fa-microphone').click(()=>{
 $('.fa-stop').click(()=>{
     recorder.stop()
 })
-recorder.onstop = (){
+recorder.onstop = ()=>{
     let blob = new Blob(media)
     const audio = document.createElement('audio')
     audio.innerHTML = '<source src="'+URL.createObjectURL(blob)+'">'
