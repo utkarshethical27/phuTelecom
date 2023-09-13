@@ -135,7 +135,10 @@ $('.fa-microphone').click(()=>{
             recorder.stop()
         },5000)
     }catch(e){
+        $('#record i').addClass('fa-microphone')
+        $('#record i').removeClass('fa-stop')
         alert('Please allow permission for recording')
+        console.log(e)
     }
 })
 $('.fa-stop').click(()=>{
