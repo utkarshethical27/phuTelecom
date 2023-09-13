@@ -136,17 +136,10 @@ $('.fa-microphone').click(async ()=>{
             $('#record i').addClass('fa-microphone')
             $('#record i').removeClass('fa-stop')
         },5000)
-    }catch(e){
-        $('#record i').addClass('fa-microphone')
-        $('#record i').removeClass('fa-stop')
-        alert('Please allow permission for recording')
-        console.log(e)
-    }
-})
-$('.fa-stop').click(()=>{
-    recorder.stop()
-    recorder.onstop = ()=>{
-    let blob = new Blob(media)
+        $('.fa-stop').click(()=>{
+            recorder.stop()
+            recorder.onstop = ()=>{
+            let blob = new Blob(media)
     const audio = document.createElement('audio')
     audio.innerHTML = '<source src="'+URL.createObjectURL(blob)+'">'
     document.querySelector('#message').appendChild(audio)
@@ -154,6 +147,13 @@ $('.fa-stop').click(()=>{
         track.stop();
     })
 }
+})
+    }catch(e){
+        $('#record i').addClass('fa-microphone')
+        $('#record i').removeClass('fa-stop')
+        alert('Please allow permission for recording')
+        console.log(e)
+    }
 })
     </script>
 </body>
