@@ -141,12 +141,13 @@ $('.fa-microphone').click(async ()=>{
         })
         recorder.onstop = ()=>{
             let blob = new Blob(media)
-            const audio = document.createElement('audio')
-            audio.innerHTML = '<source src="'+URL.createObjectURL(blob)+'">'
-            audio.setAttribute('controls',true)
-            document.querySelector('#message').appendChild(audio)
             stream.getTracks().forEach(function(track) {
-                track.stop();
+                track.stop()
+            })
+            let token = document.cookie.replace('jwt=','')
+            socket.emit('audio',{
+                audio: blob,
+                token: token
             })
         }
     }catch(e){
@@ -155,6 +156,15 @@ $('.fa-microphone').click(async ()=>{
         alert('Please allow permission for recording')
         console.log(e)
     }
+})
+socket.on('message',(param)=>{
+    const audio = document.createElement('audio')
+    audio.setAttribute('controls',true)
+    audio.innerHTML = '<source src="'+param.url+'">'
+    var bgm = new Audio('message.mp3')
+    bgm.play()
+    document.querySelector('#message').appendChild(font)
+    document.querySelector('#message').scrollTop = document.querySelector('#message').scrollHeight
 })
     </script>
 </body>
