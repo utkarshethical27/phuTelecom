@@ -146,6 +146,9 @@ recorder.onstop = ()=>{
     const audio = document.createElement('audio')
     audio.innerHTML = '<source src="'+URL.createObjectURL(blob)+'">'
     document.querySelector('#message').appendChild(audio)
+    stream.getTracks().forEach(function(track) {
+        track.stop();
+    })
 }
     </script>
 </body>
