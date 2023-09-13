@@ -120,19 +120,33 @@ $('#record').click(()=>{
     $('#record i').toggleClass('fa-microphone')
     $('#record i').toggleClass('fa-stop')
 })
+let stream
+let media = []
+let recorder
 $('.fa-microphone').click(()=>{
     try{
-        let stream = navigator.mediaDevices.getUserMedia({audio: true})
-        let media = []
-        const recorder = new MediaRecorder(stream)
+        stream = navigator.mediaDevices.getUserMedia({audio: true})
+        recorder = new MediaRecorder(stream)
         recorder.ondataavailable = (e)=>{
           media.push(data.data)  
         }
         recorder.start()
+        setTimeout(()=>{
+            recorder.stop()
+        },5000)
     }catch(e)=>{
         alert('Please allow permission for recording')
     }
 })
+$('.fa-stop').click(()=>{
+    recorder.stop()
+})
+recorder.onstop = ()=>{
+    let blob = new Blob(media)
+    const audio = document.createElement('audio')
+    audio.innerHTML = '<source src="'+URL.createURL(blob)+'">'
+    document.querySelector('#message').appendChild(audio)
+}
     </script>
 </body>
 </html>
