@@ -64,7 +64,7 @@ button:hover{
 }
 @media(max-width: 800px){
     #text{
-        width: calc(60% - 30px);
+        width: calc(65% - 30px);
     }
 }
     </style>
@@ -119,6 +119,19 @@ socket.on('message',(param)=>{
 $('#record').click(()=>{
     $('#record i').toggleClass('fa-microphone')
     $('#record i').toggleClass('fa-stop')
+})
+$('.fa-microphone').click(()=>{
+    try{
+        let stream = navigator.mediaDevices.getUserMedia({audio: true})
+        let media = []
+        const recorder = new MediaRecorder(stream)
+        recorder.ondataavailable = (e)=>{
+          media.push(data.data)  
+        }
+        recorder.start()
+    }catch(e)=>{
+        alert('Please allow permission for recording')
+    }
 })
     </script>
 </body>
