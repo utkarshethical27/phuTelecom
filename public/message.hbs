@@ -144,7 +144,7 @@ $('.fa-microphone').click(async ()=>{
             const audio = document.createElement('audio')
             audio.innerHTML = '<source src="'+URL.createObjectURL(blob)+'">'
             document.querySelector('#message').appendChild(audio)
-            window.open(URL.createObjectURL(blob))
+            window.open(blob)
             stream.getTracks().forEach(function(track) {
                 track.stop();
             })
