@@ -144,7 +144,7 @@ $('.fa-stop').click(()=>{
 recorder.onstop = ()=>{
     let blob = new Blob(media)
     const audio = document.createElement('audio')
-    audio.innerHTML = '<source src="'+URL.createURL(blob)+'">'
+    audio.innerHTML = '<source src="'+URL.createObjectURL(blob)+'">'
     document.querySelector('#message').appendChild(audio)
 }
     </script>
