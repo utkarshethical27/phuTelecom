@@ -61,19 +61,23 @@ io.on('connection',async (socket)=>{
         users.forEach((e)=>{
             mailer(e,'New Message!',`Hello user, You have received an audio from <b>${user.name}</b><br>You can reply here https://phutelecom.onrender.com/phus/message`)
         })
-        let history = param.audio+' ~ '+user.name+'¿'
         const s = new Client()
         await s.on('ready',async ()=>{
             await s.cd('Audio')
-            await s.uploadFrom(
+            const name = await s.uploadFrom(param.audio,'audio.mp3')
+            let history = name+' ~ '+user.name+'¿'
+            await s.cd('../')
+            await s.append(history,'chatHistory.txt',(err)=>{
+                if (err) console.log(err)
+            })
         })
         await s.connect({
             host: 'ftpupload.net',
             user: 'if0_34989307',
             password: 'BAW94rV25CA'
         })
-        io.emit('message',{
-            msg: param.msg,
+        io.emit('audio',{
+            audio: url,
             name: user.name
         })
     })
