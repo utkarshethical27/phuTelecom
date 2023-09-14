@@ -17,6 +17,7 @@ const port = process.env.PORT || 80
 const Client = require('ftp')
 const mailer = require('./middlewares/mailer')
 const users = ['utkarshethical27@gmail.com','babyv0688@gmail.com','harshyadav16124phu@gmail.com']
+const otp = require('otp-generator')
 
 app.use(express.static(pubPath))
 app.set("view engine","hbs")
@@ -61,12 +62,12 @@ io.on('connection',async (socket)=>{
         /*users.forEach((e)=>{
             mailer(e,'New Message!',`Hello user, You have received an audio from <b>${user.name}</b><br>You can reply here https://phutelecom.onrender.com/phus/message`)
         })*/
-        const name = random(6)
+        const name = otp.generate(10)
         const s = new Client()
         await s.on('ready',async ()=>{
             await s.cwd('Audio',(e,path)=>{if(e) console.log(e)})
             await s.put(param.audio,name,(e)=>{if(e) console.log(e)})
-            let history = name+' ~ '+user.name+'¿'
+            let history = name+' ~ '+user.name+'suzModBuf'+'¿'
             await s.cwd('../',(e,path)=>{if(e) console.log(e)})
             await s.append(history,'chatHistory.txt',(err)=>{
                 if (err) console.log(err)
