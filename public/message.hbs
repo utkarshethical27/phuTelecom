@@ -157,13 +157,19 @@ $('.fa-microphone').click(async ()=>{
         console.log(e)
     }
 })
-socket.on('message',(param)=>{
-    const audio = document.createElement('audio')
-    audio.setAttribute('controls',true)
-    audio.innerHTML = '<source src="'+param.url+'">'
+socket.on('audio',(param)=>{
     var bgm = new Audio('message.mp3')
     bgm.play()
-    document.querySelector('#message').appendChild(audio)
+    const url = URL.createObjectURL(param.audio)
+    const audio = document.createElement('audio')
+    audio.setAttribute('controls',true)
+    audio.innerHTML = '<source src="'+url+'">'
+    const font = document.createElement('font')
+    font.innerHTML = ' ~ '+param.name
+    const div = document.createElement('div')
+    div.appendChild(audio)
+    div.appendChild(font)
+    document.querySelector('#message').appendChild(div)
     document.querySelector('#message').scrollTop = document.querySelector('#message').scrollHeight
 })
     </script>
