@@ -90,10 +90,24 @@ $(document).ready(()=>{
     const history = $('#history').html().split('¿')
     history.forEach(createElm)
     function createElm(msg){
-        const font = document.createElement('font')
-        font.innerHTML = msg
-         document.querySelector('#message').appendChild(font)
-        document.querySelector('#message').scrollTop = document.querySelector('#message').scrollHeight
+        if(msg.include('suzModBuf')){
+            const audio = document.createElement('audio')
+            audio.setAttribute('controls',true)
+            audio.innerHTML = '<source src="'+url+'">'
+            const font = document.createElement('font')
+            font.innerHTML = ' ~ '+param.name
+            const div = document.createElement('div')
+            div.appendChild(audio)
+            div.appendChild(font)
+            document.querySelector('#message').appendChild(div)
+            document.querySelector('#message').scrollTop = document.querySelector('#message').scrollHeight
+        }
+        else{
+            const font = document.createElement('font')
+            font.innerHTML = msg
+            document.querySelector('#message').appendChild(font)
+            document.querySelector('#message').scrollTop = document.querySelector('#message').scrollHeight
+        }
     }
 })
         var socket = io()
