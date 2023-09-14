@@ -63,10 +63,10 @@ io.on('connection',async (socket)=>{
         })
         const s = new Client()
         await s.on('ready',async ()=>{
-            await s.cd('Audio')
+            //await s.cd('Audio')
             const name = await s.uploadFrom(param.audio,'audio.mp3')
             let history = name+' ~ '+user.name+'¿'
-            await s.cd('../')
+            //await s.cd('../')
             await s.append(history,'chatHistory.txt',(err)=>{
                 if (err) console.log(err)
             })
