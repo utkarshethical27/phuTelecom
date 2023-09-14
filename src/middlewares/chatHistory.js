@@ -8,12 +8,22 @@ const chatHistory = async (req,res)=>{
             if (err) console.log(err)
             stream.once('close', function() { server.end(); });
             var readable = stream
-            readable.on('data', function(chunk) {
-                res.render('message',{
-                    history: chunk
+            readable.on('data', function(his) {
+                his.split('¿')
+                his.forEach((e)=>{
+                    if(e.includes('suzModBuf')){
+                    const name = e.replace('suzModBuf','').split('~')[0]
+                        await server.get('./Audio/'+name,async (err,stream)=>{
+                            if (err) console.log(err)
+                            stream.once('close', function() { server.end(); });
+                            var audio = stream
+                            audio.on('data', function(his) {
+                                
+                            })
+                        })
+                    }
                 })
-            })
-        })
+          })
     })
     await server.connect({
         host: 'ftpupload.net',
