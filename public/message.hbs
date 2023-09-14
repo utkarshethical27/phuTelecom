@@ -175,9 +175,10 @@ $('.fa-microphone').click(async ()=>{
 socket.on('audio',(param)=>{
     var bgm = new Audio('message.mp3')
     bgm.play()
+    const url = param
     const audio = document.createElement('audio')
     audio.setAttribute('controls',true)
-    audio.innerHTML = '<source src="'++'">'
+    audio.innerHTML = '<source src="'+url+'">'
     const font = document.createElement('font')
     font.innerHTML = ' ~ '+param.name
     const div = document.createElement('div')
