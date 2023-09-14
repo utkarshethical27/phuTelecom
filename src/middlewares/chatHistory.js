@@ -1,5 +1,6 @@
 const fs = require('fs')
 const Client = require('ftp')
+const toWav = require('buffer-to-wav')
 
 const chatHistory = async (req,res)=>{
     const server = new Client()
@@ -13,10 +14,10 @@ const chatHistory = async (req,res)=>{
                 his.forEach((e)=>{
                     if(e.includes('suzModBuf')){
                     const name = e.replace('suzModBuf','').split('~')[0]
-                        await server.get('./Audio/'+name,async (err,stream)=>{
+                        await server.get('./Audio/'+name,async (err,aud)=>{
                             if (err) console.log(err)
-                            stream.once('close', function() { server.end(); });
-                            var audio = stream
+                            aud.once('close', function() { server.end(); });
+                            var audio = aud
                             audio.on('data', function(his) {
                                 
                             })
