@@ -62,7 +62,8 @@ io.on('connection',async (socket)=>{
         /*users.forEach((e)=>{
             mailer(e,'New Message!',`Hello user, You have received an audio from <b>${user.name}</b><br>You can reply here https://phutelecom.onrender.com/phus/message`)
         })*/
-        const name = otp.generate(10)
+        let name = otp.generate(10)
+        name = name+'.mp3'
         const s = new Client()
         await s.on('ready',async ()=>{
             await s.cwd('Audio',(e,path)=>{if(e) console.log(e)})
