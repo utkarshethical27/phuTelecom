@@ -1,5 +1,6 @@
 const fs = require('fs')
 const Client = require('ftp')
+const ftp = require('basic-ftp')
 
 const chatHistory = async (req,res)=>{
     const server = new Client()
@@ -9,18 +10,28 @@ const chatHistory = async (req,res)=>{
             stream.once('close', function() { server.end(); });
             var readable = stream
             readable.on('data', function(his) {
-                his.split('¿')
-                his.forEach((e)=>{
+                let mess = his
+                mess = mess.split('¿')
+                mess.forEach((e)=>{
                     if(e.includes('suzModBuf')){
-                    const name = e.replace('suzModBuf','').split('~')[0]
-                        await server.get('./Audio/'+name,async (err,aud)=>{
-                            if (err) console.log(err)
-                            aud.once('close', function() { server.end(); });
-                            var audio = aud
-                            audio.on('data', function(his) {
-                                
+                        const name = e.replace('suzModBuf','').split('~')[0]
+                        const client = new ftp.Client()
+                        client.ftp.verbose = true
+                        try {
+                            await client.access({
+                                host: "ftpupload.net",
+                                user: "if0_34989307",
+                                password: "BAW94rV25CA"
                             })
-                        })
+                            await client.cd('Audio')
+                            await client.downloadTo('Storage/'+name,name)
+                            res.render('message.hbs',{
+                                history: his
+                            })
+                        }
+                        catch(e){
+                          res.send(e)
+                        }
                     }
                 })
           })
