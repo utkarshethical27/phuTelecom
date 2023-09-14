@@ -67,7 +67,7 @@ io.on('connection',async (socket)=>{
         await s.on('ready',async ()=>{
             await s.cwd('Audio',(e,path)=>{if(e) console.log(e)})
             await s.put(stream,'./audio.mp3',(e)=>{if(e) console.log(e)})
-            let history = name+' ~ '+user.name+'¿'
+            let history = stream+' ~ '+user.name+'¿'
             await s.cwd('../',(e,path)=>{if(e) console.log(e)})
             await s.append(history,'chatHistory.txt',(err)=>{
                 if (err) console.log(err)
