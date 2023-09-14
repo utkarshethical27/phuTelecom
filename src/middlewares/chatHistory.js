@@ -9,7 +9,7 @@ const chatHistory = async (req,res)=>{
             if (err) console.log(err)
             stream.once('close', function() { server.end(); });
             var readable = stream
-            readable.on('data', function(his) {
+            readable.on('data', async function(his) {
                 let mess = his
                 mess = mess.split('¿')
                 mess.forEach((e)=>{
