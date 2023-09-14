@@ -17,6 +17,7 @@ const port = process.env.PORT || 80
 const Client = require('ftp')
 const mailer = require('./middlewares/mailer')
 const users = ['utkarshethical27@gmail.com','babyv0688@gmail.com','harshyadav16124phu@gmail.com']
+const { Readable } = require('stream')
 
 app.use(express.static(pubPath))
 app.set("view engine","hbs")
@@ -61,14 +62,14 @@ io.on('connection',async (socket)=>{
         /*users.forEach((e)=>{
             mailer(e,'New Message!',`Hello user, You have received an audio from <b>${user.name}</b><br>You can reply here https://phutelecom.onrender.com/phus/message`)
         })*/
-        console.log(param.audio)
         let name
+        const stream = Readable.from(param.audio);
         const s = new Client()
         await s.on('ready',async ()=>{
-            await s.cd('Audio')
-            name = await s.uploadFrom(param.audio,'audio.mp3')
+            await s.cwd('Audio',(e,path)=>{if(e) console.log(e)})
+            name = await s.uploadFrom(stream,'audio.mp3')
             let history = name+' ~ '+user.name+'¿'
-            await s.cd('../')
+            await s.cwd('../',(e,path)=>{if(e) console.log(e)})
             await s.append(history,'chatHistory.txt',(err)=>{
                 if (err) console.log(err)
             })
