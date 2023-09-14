@@ -62,10 +62,11 @@ io.on('connection',async (socket)=>{
             mailer(e,'New Message!',`Hello user, You have received an audio from <b>${user.name}</b><br>You can reply here https://phutelecom.onrender.com/phus/message`)
         })*/
         console.log(param.audio)
+        let name
         const s = new Client()
         await s.on('ready',async ()=>{
             await s.cd('Audio')
-            const name = await s.uploadFrom(param.audio,'audio.mp3')
+            name = await s.uploadFrom(param.audio,'audio.mp3')
             let history = name+' ~ '+user.name+'¿'
             await s.cd('../')
             await s.append(history,'chatHistory.txt',(err)=>{
