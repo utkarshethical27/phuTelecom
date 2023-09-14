@@ -12,7 +12,7 @@ const chatHistory = async (req,res)=>{
             readable.on('data', async function(his) {
                 let mess = his
                 mess = mess.split('¿')
-                mess.forEach((e)=>{
+                mess.forEach(async (e)=>{
                     if(e.includes('suzModBuf')){
                         const name = e.replace('suzModBuf','').split('~')[0]
                         const client = new ftp.Client()
