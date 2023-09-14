@@ -1,6 +1,5 @@
 const fs = require('fs')
 const Client = require('ftp')
-const toWav = require('buffer-to-wav')
 
 const chatHistory = async (req,res)=>{
     const server = new Client()
