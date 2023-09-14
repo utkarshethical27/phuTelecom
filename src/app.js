@@ -58,15 +58,16 @@ io.on('connection',async (socket)=>{
     })
     socket.on('audio', async (param)=>{
         let user = await fetchUser.fetch(param.token)
-        users.forEach((e)=>{
+        /*users.forEach((e)=>{
             mailer(e,'New Message!',`Hello user, You have received an audio from <b>${user.name}</b><br>You can reply here https://phutelecom.onrender.com/phus/message`)
-        })
+        })*/
+        console.log(param.audio)
         const s = new Client()
         await s.on('ready',async ()=>{
-            //await s.cd('Audio')
+            await s.cd('Audio')
             const name = await s.uploadFrom(param.audio,'audio.mp3')
             let history = name+' ~ '+user.name+'¿'
-            //await s.cd('../')
+            await s.cd('../')
             await s.append(history,'chatHistory.txt',(err)=>{
                 if (err) console.log(err)
             })
