@@ -64,9 +64,8 @@ io.on('connection',async (socket)=>{
         let history = param.audio+' ~ '+user.name+'¿'
         const s = new Client()
         await s.on('ready',async ()=>{
-          await s.append(history,'chatHistory.txt',(err)=>{
-            if (err) console.log(err)
-          })
+            await s.cd('Audio')
+            await s.uploadFrom(
         })
         await s.connect({
             host: 'ftpupload.net',
