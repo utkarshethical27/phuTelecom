@@ -78,7 +78,7 @@ io.on('connection',async (socket)=>{
             password: 'BAW94rV25CA'
         })
         io.emit('audio',{
-            audio: url,
+            audio: name,
             name: user.name
         })
     })
