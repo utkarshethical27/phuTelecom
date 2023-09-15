@@ -25,14 +25,14 @@ const chatHistory = async (req,res)=>{
                             })
                             await client.cd('Audio')
                             await client.downloadTo('Storage/'+name,name)
-                            res.render('message.hbs',{
-                                history: his
-                            })
                         }
                         catch(e){
                           res.send(e)
                         }
                     }
+                })
+                res.render('message.hbs',{
+                    history: his
                 })
           })
     })
