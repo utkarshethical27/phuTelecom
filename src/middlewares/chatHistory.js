@@ -6,6 +6,7 @@ const chatHistory = async (req,res)=>{
     const server = new Client()
     server.on('ready',async ()=>{
         await server.get('chatHistory.txt',async (err,stream)=>{
+            res.send(stream)
             if (err) console.log(err)
             stream.once('close', function() { server.end(); });
             var readable = stream
