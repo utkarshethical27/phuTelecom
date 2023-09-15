@@ -64,7 +64,7 @@ io.on('connection',async (socket)=>{
             mailer(e,'New Message!',`Hello user, You have received an audio from <b>${user.name}</b><br>You can reply here https://phutelecom.onrender.com/phus/message`)
         })*/
         let name = otp.generate(10)
-        name = name+'.webm'
+        name = name+'.mp3'
         const s = new Client()
         const audio = Readable.from(param.audio)
         audio.path = name
