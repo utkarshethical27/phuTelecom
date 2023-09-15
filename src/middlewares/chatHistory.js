@@ -31,7 +31,7 @@ const chatHistory = async (req,res)=>{
                         }
                     }
                 })
-                res.render('message.hbs',{
+                res.render('message',{
                     history: his
                 })
           })
