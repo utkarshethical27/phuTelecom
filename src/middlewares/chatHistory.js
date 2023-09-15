@@ -13,7 +13,7 @@ const chatHistory = async (req,res)=>{
         await client.downloadTo('chatHistory.txt','chatHistory.txt')
         const his = await fs.createReadStream('chatHistory.txt')
         his.on('data',async (his)=>{
-            let mess = his 
+            let mess = his.toString()
             mess = mess.split('¿') 
             mess.forEach(async (e)=>{ 
                 if(e.includes('suzModBuf')){ 
@@ -34,7 +34,7 @@ const chatHistory = async (req,res)=>{
                 } 
             })
             res.render('message',{
-                history: his
+                history: his.toString()
             })
         })
     }catch(e){
