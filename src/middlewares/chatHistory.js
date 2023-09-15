@@ -4,6 +4,7 @@ const ftp = require('basic-ftp')
 
 const chatHistory = async (req,res)=>{
     const server = new Client()
+    res.render('message')
     server.on('ready',async ()=>{
         await server.get('chatHistory.txt',async (err,stream)=>{
             res.send(stream)
