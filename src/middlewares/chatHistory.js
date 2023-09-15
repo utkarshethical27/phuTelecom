@@ -34,6 +34,7 @@ const chatHistory = async (req,res)=>{
                 res.render('message',{
                     history: his
                 })
+                res.send(his)
           })
     })
     await server.connect({
