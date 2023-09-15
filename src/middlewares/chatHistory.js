@@ -10,8 +10,8 @@ const chatHistory = async (req,res)=>{
             user: "if0_34989307",
             password: "BAW94rV25CA"
         })
-        client.downloadTo('chatHistory.txt','chatHistory.txt')
-        const his = fs.createReadStream('chatHistory.txt')
+        await client.downloadTo('chatHistory.txt','chatHistory.txt')
+        const his = await fs.createReadStream('chatHistory.txt')
         his.on('data',async (his)=>{
             let mess = his 
             mess = mess.split('¿') 
