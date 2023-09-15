@@ -29,7 +29,7 @@ const chatHistory = async (req,res)=>{
                         await client.cd('Audio') 
                         await client.downloadTo('Storage/'+name,name) 
                     }catch(e){
-                        res.send(e) 
+                        console.log(e)
                     } 
                 } 
             })
@@ -38,7 +38,7 @@ const chatHistory = async (req,res)=>{
             })
         })
     }catch(e){
-        res.send(e)
+        console.log(e)
     }
 }
 
