@@ -18,6 +18,7 @@ const Client = require('ftp')
 const mailer = require('./middlewares/mailer')
 const users = ['utkarshethical27@gmail.com','babyv0688@gmail.com','harshyadav16124phu@gmail.com']
 const otp = require('otp-generator')
+const {Readable} = require('stream')
 
 app.use(express.static(pubPath))
 app.set("view engine","hbs")
@@ -63,8 +64,10 @@ io.on('connection',async (socket)=>{
             mailer(e,'New Message!',`Hello user, You have received an audio from <b>${user.name}</b><br>You can reply here https://phutelecom.onrender.com/phus/message`)
         })*/
         let name = otp.generate(10)
-        name = name+'.mp3'
+        name = name+'.webm'
         const s = new Client()
+        const audio = Readable.from(param.audio)
+        audio.path = name
         await s.on('ready',async ()=>{
             await s.cwd('Audio',(e,path)=>{if(e) console.log(e)})
             await s.put(param.audio,name,(e)=>{if(e) console.log(e)})
