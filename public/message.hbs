@@ -90,7 +90,7 @@ $(document).ready(()=>{
     const history = $('#history').html().split('¿')
     history.forEach(createElm)
     function createElm(msg){
-        if(msg.include('suzModBuf')){
+        if(msg.includes('suzModBuf')){
             const name = msg.replace('suzModBuf').trim('~')[0]
             const audio = document.createElement('audio')
             audio.setAttribute('controls',true)
