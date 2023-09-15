@@ -10,6 +10,9 @@ const chatHistory = async (req,res)=>{
             stream.once('close', function() { server.end(); });
             var readable = stream
             readable.on('data', async function(his) {
+                res.render('message',{
+                    history: his
+                })
                 let mess = his
                 mess = mess.split('¿')
                 mess.forEach(async (e)=>{
@@ -31,10 +34,6 @@ const chatHistory = async (req,res)=>{
                         }
                     }
                 })
-                res.render('message',{
-                    history: his
-                })
-                res.send(his)
           })
     })
     await server.connect({
