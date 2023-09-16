@@ -92,10 +92,8 @@ $(document).ready(()=>{
     function createElm(msg){
         if(msg.includes('suzModBuf')){
             const mess = msg.replace('suzModBuf').split('~')
-            alert(mess[0]+'+~+'+mess[1])
-            alert(window.location.pathname)
             const audio = document.createElement('audio')
-            audio.innerHTML = '<source src="./storage/'+mess[0]+'">'
+            audio.innerHTML = '<source src="../storage/'+mess[0]+'">'
             audio.setAttribute('controls',true)
             document.querySelector('#message').appendChild(audio)
             document.querySelector('#message').scrollTop = document.querySelector('#message').scrollHeight
