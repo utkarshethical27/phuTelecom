@@ -15,7 +15,8 @@ const chatHistory = async (req,res)=>{
         const his = await fs.createReadStream('chatHistory.txt')
         his.on('data',async (his)=>{
             let mess = his.toString()
-            mess = mess.split('¿') 
+            mess = mess.split('¿')
+            let stuff = []
             mess.forEach(async (e)=>{ 
                 if(e.includes('suzModBuf')){ 
                     const name = e.replace('suzModBuf','').split('~')[0] 
@@ -28,6 +29,7 @@ const chatHistory = async (req,res)=>{
                             password: "BAW94rV25CA" 
                         }) 
                         const pwd = await client.pwd()
+                        stuff.push(pwd)
                         if(!pwd.includes('Audio')){
                             await client.cd('Audio')
                         }
@@ -38,9 +40,9 @@ const chatHistory = async (req,res)=>{
                     } 
                 } 
             })
+            res.send(stuff)
             fs.readdir(path.join(__dirname,'../../storage/'),(err,dir)=>{
                 if(err) console.log(err)
-                res.send(dir)
             })
             /*res.render('message',{
                 history: his.toString()
