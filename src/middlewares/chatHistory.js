@@ -27,7 +27,7 @@ const chatHistory = async (req,res)=>{
                             password: "BAW94rV25CA" 
                         }) 
                         await client.cd('Audio') 
-                        await client.downloadTo(name,'./storage/'+name)
+                        await client.downloadTo('./storage/'+name,name)
                     }catch(e){
                         console.log(e)
                     } 
