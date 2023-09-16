@@ -26,8 +26,15 @@ const chatHistory = async (req,res)=>{
                             user: "if0_34989307", 
                             password: "BAW94rV25CA" 
                         }) 
-                        await client.cd('Audio') 
-                        await client.downloadTo('./storage/'+name,'./Audio/'+name)
+                        const pwd = await client.pwd()
+                        if(!pwd.includes('Audio')){
+                            await client.cd('Audio')
+                        }
+                        await client.downloadTo('./storage/'+name,name)
+                        fs.readdir('./storage/',(err,dir)=>{
+                            if(err) console.log(err)
+                            console.log(dir)
+                        })
                     }catch(e){
                         console.log(e)
                     } 
