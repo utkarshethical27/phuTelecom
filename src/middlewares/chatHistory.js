@@ -31,14 +31,14 @@ const chatHistory = async (req,res)=>{
                             await client.cd('Audio')
                         }
                         await client.downloadTo('./storage/'+name,name)
-                        fs.readdir('./storage/',(err,dir)=>{
-                            if(err) console.log(err)
-                            console.log(dir)
-                        })
                     }catch(e){
                         console.log(e)
                     } 
                 } 
+            })
+            fs.readdir('./storage/',(err,dir)=>{
+                if(err) console.log(err)
+                console.log(dir)
             })
             res.render('message',{
                 history: his.toString()
