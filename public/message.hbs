@@ -93,7 +93,7 @@ $(document).ready(()=>{
         if(msg.includes('suzModBuf')){
             const name = msg.replace('suzModBuf').trim('~')[0]
             const div = document.createElement('div')
-            div.innerHTML = '<audio><source src="../storage/'+name+'"></audio><font>~ '+msg.replace('suzModBuf').trim('~')[1]+'</font>'
+            div.innerHTML = '<audio><source src="../storage/'+name+'" controls></audio><font>~ '+msg.replace('suzModBuf').trim('~')[1]+'</font>'
             document.querySelector('#message').appendChild(div)
             document.querySelector('#message').scrollTop = document.querySelector('#message').scrollHeight
         }
@@ -171,7 +171,7 @@ socket.on('audio',(param)=>{
     bgm.play()
     const url = URL.createObjectURL(param.audio)
     const div = document.createElement('div')
-    div.innerHTML = '<audio><source src="'+url+'"></audio><font>~ '+param.name+'</font>'
+    div.innerHTML = '<audio><source src="'+url+'" controls></audio><font>~ '+param.name+'</font>'
     document.querySelector('#message').appendChild(div)
     document.querySelector('#message').scrollTop = document.querySelector('#message').scrollHeight
 })
