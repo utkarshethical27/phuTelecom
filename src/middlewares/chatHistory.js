@@ -34,7 +34,8 @@ const chatHistory = async (req,res)=>{
                             await client.cd('Audio')
                         }
                         const to = path.join(__dirname,'../../storage/')
-                        await client.downloadTo(to+name,name)
+                        const down = await client.downloadTo(to+name,name)
+                        stuff.push(down)
                     }catch(e){
                         console.log(e)
                     } 
