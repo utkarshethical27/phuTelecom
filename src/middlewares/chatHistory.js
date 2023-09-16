@@ -1,5 +1,6 @@
 const fs = require('fs')
 const ftp = require('basic-ftp')
+const path = require('path')
 
 const chatHistory = async (req,res)=>{
     const client = new ftp.Client()
@@ -30,13 +31,14 @@ const chatHistory = async (req,res)=>{
                         if(!pwd.includes('Audio')){
                             await client.cd('Audio')
                         }
-                        await client.downloadTo('./storage/'+name,name)
+                        const to = path.join(__dirname,'../../storage/')
+                        await client.downloadTo(to+name,name)
                     }catch(e){
                         console.log(e)
                     } 
                 } 
             })
-            fs.readdir('./storage/',(err,dir)=>{
+            fs.readdir(path.join(__dirname,'../../storage/'),(err,dir)=>{
                 if(err) console.log(err)
                 res.send(dir)
             })
