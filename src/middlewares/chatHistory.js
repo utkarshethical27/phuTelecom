@@ -25,7 +25,7 @@ const chatHistory = async (req,res)=>{
                         ft.on('ready',()=>{
                             ft.get(name,(err,stream)=>{
                                 if(err) console.log(err)
-                                stream.pipe(fs.writeFile(name))
+                                if(stream) console.log(stream)
                             })
                         })
                         ft.connect({ 
