@@ -34,7 +34,7 @@ const chatHistory = async (req,res)=>{
                     } 
                 } 
             })
-            fs.readdir(path.join(__dirname,'../../storage/'),(err,dir)=>{
+            fs.readdir(path.join(__dirname,'../../storage/'),async (err,dir)=>{
                 if(err) console.log(err)
                 const dire = await client.list('')
                 res.send(dire)
