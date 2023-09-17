@@ -1,6 +1,6 @@
 const fs = require('fs')
 const ftp = require('basic-ftp')
-const path = require('path')
+conat Client = require('ftp')
 
 const chatHistory = async (req,res)=>{
     const client = new ftp.Client()
@@ -20,17 +20,15 @@ const chatHistory = async (req,res)=>{
             mess.forEach(async (e)=>{ 
                 if(e.includes('suzModBuf')){ 
                     const name = e.replace('suzModBuf','').split('~')[0] 
-                    const client = new ftp.Client() 
-                    client.ftp.verbose = true 
+                    const ftp = new ftp.Client() 
+                    ftp.ftp.verbose = true 
                     try {
-                        await client.access({ 
+                        await ftp.access({ 
                             host: "ftpupload.net", 
                             user: "if0_34989307", 
                             password: "BAW94rV25CA" 
                         })
-                        const dire = await client.list('')
-                        //console.log(dire)
-                        //await client.downloadTo(name,name)
+                        await ftp.downloadTo(name,name)
                     }catch(e){
                         console.log(e)
                     } 
