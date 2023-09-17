@@ -1,6 +1,6 @@
 const fs = require('fs')
 const ftp = require('basic-ftp')
-conat Client = require('ftp')
+const Client = require('ftp')
 
 const chatHistory = async (req,res)=>{
     const client = new ftp.Client()
