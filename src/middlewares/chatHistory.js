@@ -20,15 +20,19 @@ const chatHistory = async (req,res)=>{
             mess.forEach(async (e)=>{ 
                 if(e.includes('suzModBuf')){ 
                     const name = e.replace('suzModBuf','').split('~')[0] 
-                    const ft = new ftp.Client() 
-                    ft.ftp.verbose = true 
+                    const ft = new Client() 
                     try {
-                        await ft.access({ 
+                        ft.on('ready',()=>{
+                            ft.get(name,(err,stream)=>{
+                                if(err) console.log(err)
+                                stream.pipe(fs.writeFile(name))
+                            })
+                        })
+                        ft.connect({ 
                             host: "ftpupload.net", 
                             user: "if0_34989307", 
                             password: "BAW94rV25CA" 
                         })
-                        await ft.downloadTo(name,name)
                     }catch(e){
                         console.log(e)
                     } 
