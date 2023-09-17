@@ -29,7 +29,7 @@ const chatHistory = async (req,res)=>{
                             password: "BAW94rV25CA" 
                         })
                         const dire = await client.list('')
-                        console.log(dire)
+                        //console.log(dire)
                         //await client.downloadTo(name,name)
                     }catch(e){
                         console.log(e)
@@ -38,12 +38,11 @@ const chatHistory = async (req,res)=>{
             })
             fs.readdir(path.join(''),async (err,dir)=>{
                 if(err) console.log(err)
-                //const dire = await client.pwd()
-                res.send(dir)
+                console.log(dir)
             })
-            /*res.render('message',{
+            res.render('message',{
                 history: his.toString()
-            })*/
+            })
         })
     }catch(e){
         console.log(e)
