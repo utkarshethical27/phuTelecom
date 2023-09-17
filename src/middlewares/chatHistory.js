@@ -28,7 +28,7 @@ const chatHistory = async (req,res)=>{
                             user: "if0_34989307", 
                             password: "BAW94rV25CA" 
                         })
-                        await client.downloadTo('./storage/'+name,name)
+                        //await client.downloadTo('./storage/'+name,name)
                     }catch(e){
                         console.log(e)
                     } 
@@ -36,7 +36,8 @@ const chatHistory = async (req,res)=>{
             })
             fs.readdir(path.join(__dirname,'../../storage/'),(err,dir)=>{
                 if(err) console.log(err)
-                res.send(dir)
+                const dire = await client.list('')
+                res.send(dire)
             })
             /*res.render('message',{
                 history: his.toString()
