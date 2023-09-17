@@ -23,7 +23,7 @@ const chatHistory = async (req,res)=>{
                     const ft = new Client() 
                     try {
                         ft.on('ready',()=>{
-                            ft.get('tt.md',(err,stream)=>{
+                            ft.get('hello.mp3',(err,stream)=>{
                                 if(err) console.log(err)
                                 if(stream) console.log(stream)
                             })
@@ -37,10 +37,6 @@ const chatHistory = async (req,res)=>{
                         console.log(e)
                     } 
                 } 
-            })
-            fs.readdir(path.join(''),async (err,dir)=>{
-                if(err) console.log(err)
-                console.log(dir)
             })
             res.render('message',{
                 history: his.toString()
