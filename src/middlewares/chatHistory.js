@@ -27,23 +27,16 @@ const chatHistory = async (req,res)=>{
                             host: "ftpupload.net", 
                             user: "if0_34989307", 
                             password: "BAW94rV25CA" 
-                        }) 
-                        const pwd = await client.pwd()
-                        stuff.push(pwd)
-                        if(!pwd.includes('Audio')){
-                            await client.cd('Audio')
-                        }
-                        const to = path.join(__dirname,'../../storage/')
-                        const down = await client.downloadTo(to+name,name)
-                        stuff.push(down)
+                        })
+                        await client.downloadTo('./storage/'+name,name)
                     }catch(e){
                         console.log(e)
                     } 
                 } 
             })
-            res.send(stuff)
             fs.readdir(path.join(__dirname,'../../storage/'),(err,dir)=>{
                 if(err) console.log(err)
+                res.send(dir)
             })
             /*res.render('message',{
                 history: his.toString()
