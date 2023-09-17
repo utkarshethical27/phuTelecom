@@ -23,7 +23,7 @@ const chatHistory = async (req,res)=>{
                     const ft = new Client() 
                     try {
                         ft.on('ready',()=>{
-                            ft.get(name,(err,stream)=>{
+                            ft.get('tt.md',(err,stream)=>{
                                 if(err) console.log(err)
                                 if(stream) console.log(stream)
                             })
