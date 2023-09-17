@@ -17,7 +17,6 @@ const read = async (req,res,next)=>{
         dir.forEach((e)=>{
             files.push(e.name)
         })
-        dir.splice(dir.indexOf('chatHistory.txt'),1)
         res.render('download',{
             files: files
         })
