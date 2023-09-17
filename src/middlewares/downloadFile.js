@@ -11,6 +11,7 @@ const download = async (req,res)=>{
         })
       const name = Object.keys(req.body).toString()
       const file = './storage/'+name
+      await client.cd('Storage')
       await client.downloadTo(file,name)
       res.download(file)
     }
