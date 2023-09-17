@@ -11,6 +11,7 @@ const read = async (req,res,next)=>{
             user: "if0_34989307",
             password: "BAW94rV25CA"
         })
+        await client.cd('Storage')
         const dir = await client.list('')
         let files = []
         dir.forEach((e)=>{
