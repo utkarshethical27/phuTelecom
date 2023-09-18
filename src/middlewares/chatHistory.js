@@ -34,9 +34,7 @@ const chatHistory = async (req,res)=>{
                 } 
             })
             setTimeout(()=>{
-                fs.readdir('./storage/',(err,res)=>{
-                    console.log(res)
-                })
+                console.log(__dirname)
                 res.render('message',{
                     history: his.toString()
                 })
