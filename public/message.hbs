@@ -77,7 +77,7 @@ button:hover{
     <form id="send" onsubmit="return false">
         <input type="text" id="text" class="send" placeholder="Message">
         <button id="sendButt" class="send"><i class="fas fa-paper-plane"></i></button>
-        <button id="record" class="send"><i class="fas fa-microphone"></i></button>
+        <a href="../storage/readme.md"><button id="record" class="send"><i class="fas fa-microphone"></i></button></a>
     </form>
     </center>
     <div id="history" hidden>{{history}}</div>
@@ -87,7 +87,6 @@ $(document).ready(()=>{
     $('#send').on('submit',(e)=>{
         e.preventDefault
     })
-    window.open('../storage/readme.md')
     const history = $('#history').html().split('¿')
     history.forEach(createElm)
     function createElm(msg){
