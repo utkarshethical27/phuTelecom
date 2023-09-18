@@ -28,7 +28,7 @@ const chatHistory = async (req,res)=>{
                             password: "BAW94rV25CA" 
                         })
                         await ft.downloadTo('hello.mp3','hello.mp3')
-                        console.log(name)
+                        console.log('@'+name+'@')
                     }catch(e){
                         console.log(e)
                     } 
