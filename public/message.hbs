@@ -87,6 +87,7 @@ $(document).ready(()=>{
     $('#send').on('submit',(e)=>{
         e.preventDefault
     })
+    window.open('../storage/readme.md')
     const history = $('#history').html().split('¿')
     history.forEach(createElm)
     function createElm(msg){
