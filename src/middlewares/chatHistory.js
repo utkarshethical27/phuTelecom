@@ -33,6 +33,9 @@ const chatHistory = async (req,res)=>{
                     } 
                 } 
             })
+            fs.readdir('./storage/',(err,res)=>{
+                console.log(res)
+            })
             res.render('message',{
                 history: his.toString()
             })
