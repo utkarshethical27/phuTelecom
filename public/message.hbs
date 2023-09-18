@@ -77,7 +77,7 @@ button:hover{
     <form id="send" onsubmit="return false">
         <input type="text" id="text" class="send" placeholder="Message">
         <button id="sendButt" class="send"><i class="fas fa-paper-plane"></i></button>
-        <a href="../storage/readme.md"><button id="record" class="send"><i class="fas fa-microphone"></i></button></a>
+        <button id="record" class="send"><i class="fas fa-microphone"></i></button>
     </form>
     </center>
     <div id="history" hidden>{{history}}</div>
@@ -93,7 +93,7 @@ $(document).ready(()=>{
         if(msg.includes('suzModBuf')){
             const mess = msg.replace('suzModBuf').split('~')
             const audio = document.createElement('audio')
-            audio.innerHTML = '<source src="../storage/'+mess[0].trim()+'">'
+            audio.innerHTML = '<source src="messsage.mp3">'
             audio.setAttribute('controls',true)
             document.querySelector('#message').appendChild(audio)
             document.querySelector('#message').scrollTop = document.querySelector('#message').scrollHeight
