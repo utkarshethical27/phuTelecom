@@ -27,7 +27,8 @@ const chatHistory = async (req,res)=>{
                             user: "if0_34989307", 
                             password: "BAW94rV25CA" 
                         })
-                        await ft.downloadTo('./storage/'+name,name)
+                        const upload = await ft.downloadTo('./storage/'+name,name)
+                        console.log(upload)
                     }catch(e){
                         console.log(e)
                     } 
