@@ -18,7 +18,7 @@ const chatHistory = async (req,res)=>{
             let stuff = []
             mess.forEach(async (e)=>{ 
                 if(e.includes('suzModBuf')){ 
-                    const name = e.replace('suzModBuf','').split('~')[0] 
+                    const name = e.replace('suzModBuf','').split('~')[0].trim() 
                     const ft = new ftp.Client()
                     ft.ftp.verbose = true
                     try {
@@ -27,8 +27,7 @@ const chatHistory = async (req,res)=>{
                             user: "if0_34989307", 
                             password: "BAW94rV25CA" 
                         })
-                        await ft.downloadTo('hello.mp3','hello.mp3')
-                        console.log('@'+name+'@')
+                        await ft.downloadTo('./storage/'+name,name)
                     }catch(e){
                         console.log(e)
                     } 
