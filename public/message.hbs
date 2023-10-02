@@ -90,23 +90,13 @@ $(document).ready(()=>{
     const history = $('#history').html().split('¿')
     history.forEach(createElm)
     function createElm(msg){
-        if(msg.includes('suzModBuf')){
-            const mess = msg.replace('suzModBuf').split('~')
-            const audio = document.createElement('audio')
-            audio.innerHTML = '<source src="messsage.mp3">'
-            audio.setAttribute('controls',true)
-            document.querySelector('#message').appendChild(audio)
-            document.querySelector('#message').scrollTop = document.querySelector('#message').scrollHeight
-        }
-        else{
-            const font = document.createElement('font')
-            font.innerHTML = msg
-            document.querySelector('#message').appendChild(font)
-            document.querySelector('#message').scrollTop = document.querySelector('#message').scrollHeight
-        }
+        const font = document.createElement('font')
+        font.innerHTML = msg
+        document.querySelector('#message').appendChild(font)
+        document.querySelector('#message').scrollTop = document.querySelector('#message').scrollHeight
     }
 })
-        var socket = io()
+var socket = io()
 $('#sendButt').click(()=>{
     let message = $('#text').val().replace('¿','')
     if (message!='') {
@@ -124,56 +114,6 @@ socket.on('message',(param)=>{
     var audio = new Audio('https://drive.google.com/uc?export=download&id=1_gWF0FnQiNLK3u4E4idfSfpZNXCcFIAE')
     audio.play()
     document.querySelector('#message').appendChild(font)
-    document.querySelector('#message').scrollTop = document.querySelector('#message').scrollHeight
-})
-$('#record').click(()=>{
-    $('#record i').toggleClass('fa-microphone')
-    $('#record i').toggleClass('fa-stop')
-})
-let stream
-let media = []
-let recorder
-$('.fa-microphone').click(async ()=>{
-    try{
-        stream = await navigator.mediaDevices.getUserMedia({audio: true})
-        recorder = new MediaRecorder(stream)
-        recorder.ondataavailable = (e) =>{
-          media.push(e.data)  
-        }
-        recorder.start()
-        setTimeout(()=>{
-            recorder.stop()
-            $('#record i').addClass('fa-microphone')
-            $('#record i').removeClass('fa-stop')
-        },30000)
-        $('.fa-stop').click(()=>{
-            recorder.stop()
-        })
-        recorder.onstop = ()=>{
-            let blob = new Blob(media)
-            stream.getTracks().forEach(function(track) {
-                track.stop()
-            })
-            let token = document.cookie.replace('jwt=','')
-            socket.emit('audio',{
-                audio: blob,
-                token: token
-            })
-        }
-    }catch(e){
-        $('#record i').addClass('fa-microphone')
-        $('#record i').removeClass('fa-stop')
-        alert('Please allow permission for recording')
-        console.log(e)
-    }
-})
-socket.on('audio',(param)=>{
-    var bgm = new Audio('message.mp3')
-    bgm.play()
-    const url = URL.createObjectURL(param.audio)
-    const div = document.createElement('div')
-    div.innerHTML = '<audio><source src="'+url+'" controls></audio><font>~ '+param.name+'</font>'
-    document.querySelector('#message').appendChild(div)
     document.querySelector('#message').scrollTop = document.querySelector('#message').scrollHeight
 })
     </script>
